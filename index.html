@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Emma & Nigiri 🐾</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Emma &amp; Nigiri">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a0a2e">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%231a0a2e'/%3E%3Crect x='10' y='10' width='160' height='160' rx='28' fill='%232d1b5e'/%3E%3Crect x='18' y='90' width='108' height='52' rx='8' fill='%23d4a060'/%3E%3Crect x='8' y='100' width='120' height='36' rx='8' fill='%23d4a060'/%3E%3Crect x='28' y='112' width='80' height='24' rx='4' fill='%238a5020'/%3E%3Crect x='78' y='38' width='68' height='64' rx='10' fill='%23d4a060'/%3E%3Crect x='68' y='48' width='82' height='52' rx='10' fill='%23d4a060'/%3E%3Crect x='68' y='28' width='22' height='36' rx='6' fill='%238a5020'/%3E%3Crect x='128' y='28' width='22' height='36' rx='6' fill='%238a5020'/%3E%3Crect x='88' y='62' width='12' height='12' rx='3' fill='%231a1a1a'/%3E%3Crect x='118' y='62' width='12' height='12' rx='3' fill='%231a1a1a'/%3E%3Crect x='102' y='80' width='14' height='10' rx='4' fill='%23cc4444'/%3E%3Crect x='104' y='90' width='10' height='12' rx='3' fill='%23ff6688'/%3E%3Crect x='138' y='72' width='16' height='10' rx='5' fill='%23d4a060'/%3E%3Crect x='148' y='60' width='16' height='10' rx='5' fill='%23d4a060'/%3E%3Crect x='18' y='130' width='24' height='32' rx='6' fill='%23d4a060'/%3E%3Crect x='54' y='130' width='24' height='32' rx='6' fill='%23d4a060'/%3E%3Crect x='18' y='152' width='24' height='12' rx='4' fill='%238a5020'/%3E%3Crect x='54' y='152' width='24' height='12' rx='4' fill='%238a5020'/%3E%3Ctext x='90' y='175' font-size='16' text-anchor='middle' fill='%23ff6eb4' font-family='monospace' font-weight='bold'%3ENIGIRI%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1a0a2e;--screen:#0d1f0d;--pg:#39ff14;--py:#ffe600;--pp:#ff6eb4;--pb:#00cfff;--po:#ff8c00;--shell:#2d1b5e;--shell-dark:#1a0f3a;--btn:#ff6eb4;--btn-dark:#cc3a88;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;}
+body{background:var(--bg);background-image:radial-gradient(ellipse at 20% 50%,rgba(100,0,255,.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,100,0,.1) 0%,transparent 50%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;min-height:-webkit-fill-available;font-family:'Press Start 2P',monospace;overflow:hidden;padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0);}
+.stars{position:fixed;inset:0;pointer-events:none;}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--d) infinite;}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:1;transform:scale(1.5);}}
+.overlay{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .5s;}
+.overlay.on{opacity:1;pointer-events:all;}
+#splash{background:var(--bg);z-index:3000;gap:12px;}
+#splash .sp-icon{font-size:60px;animation:bounce .8s infinite;}
+#splash .sp-sub{font-family:'VT323',monospace;font-size:20px;color:var(--py);}
+#welcome{background:var(--bg);background-image:radial-gradient(ellipse at 30% 30%,rgba(255,110,180,.18) 0%,transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(100,0,255,.15) 0%,transparent 60%);}
+.w-paw{font-size:50px;margin-bottom:14px;animation:floatPaw 2.5s ease-in-out infinite;}
+@keyframes floatPaw{0%,100%{transform:translateY(0) rotate(-5deg);}50%{transform:translateY(-12px) rotate(5deg);}}
+.w-card{background:linear-gradient(145deg,var(--shell),var(--shell-dark));border:2px solid rgba(255,110,180,.3);border-radius:20px;padding:22px;max-width:310px;width:100%;text-align:center;box-shadow:0 0 40px rgba(255,110,180,.2),0 20px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1);}
+.w-greeting{font-family:'VT323',monospace;font-size:13px;color:var(--pp);letter-spacing:3px;margin-bottom:8px;}
+.w-name{font-size:20px;color:var(--py);text-shadow:0 0 20px rgba(255,230,0,.6),2px 2px 0 rgba(0,0,0,.5);margin-bottom:14px;}
+.w-chars{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin-bottom:12px;}
+.w-chars canvas{image-rendering:pixelated;}
+.w-divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--pp),transparent);margin:0 auto 14px;}
+.w-text{font-family:'VT323',monospace;font-size:17px;color:#cce8ff;line-height:1.6;margin-bottom:18px;}
+.big-btn{background:linear-gradient(145deg,var(--pp),var(--btn-dark));border:none;border-radius:50px;padding:13px 24px;font-family:'Press Start 2P',monospace;font-size:10px;color:white;cursor:pointer;width:100%;box-shadow:0 7px 0 rgba(0,0,0,.4),0 0 20px rgba(255,110,180,.4);transition:all .1s;position:relative;overflow:hidden;}
+.big-btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:shimmer 2s infinite;}
+@keyframes shimmer{to{left:200%;}}
+.big-btn:active{transform:translateY(5px);box-shadow:0 2px 0 rgba(0,0,0,.4);}
+.device{background:linear-gradient(145deg,var(--shell),var(--shell-dark));border-radius:28px 28px 56px 56px;padding:16px 16px 32px;width:min(318px,94vw);box-shadow:0 0 60px rgba(100,0,200,.4),0 20px 80px rgba(0,0,0,.8),inset 0 2px 0 rgba(255,255,255,.15),inset 0 -4px 0 rgba(0,0,0,.4);position:relative;}
+.device::before{content:'';position:absolute;top:12px;left:50%;transform:translateX(-50%);width:7px;height:7px;background:#ff4444;border-radius:50%;box-shadow:0 0 7px #ff4444;}
+.screen-frame{background:#0a0a0a;border-radius:11px;padding:6px;margin-bottom:12px;box-shadow:inset 0 4px 12px rgba(0,0,0,.9),0 0 0 2px #111,0 0 20px rgba(57,255,20,.1);}
+.screen{background:var(--screen);border-radius:7px;width:100%;height:206px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:6px;box-shadow:inset 0 0 30px rgba(0,50,0,.5);}
+.screen::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.15) 3px,rgba(0,0,0,.15) 4px);pointer-events:none;z-index:10;}
+.sky{position:absolute;inset:0;transition:background 2s;pointer-events:none;}
+.sky.day{background:radial-gradient(ellipse at 50% 0%,#1a4a1a 0%,var(--screen) 60%);}
+.sky.night{background:radial-gradient(ellipse at 50% 0%,#0a0a1f 0%,var(--screen) 60%);}
+.sky.rain{background:radial-gradient(ellipse at 50% 0%,#0a1a2a 0%,#0a1010 60%);}
+.sky.snow{background:radial-gradient(ellipse at 50% 0%,#1a1a2a 0%,#0d0d1d 60%);}
+.sky.storm{background:radial-gradient(ellipse at 50% 0%,#1a0a0a 0%,#080808 60%);}
+/* birthday sky */
+.sky.bday{background:radial-gradient(ellipse at 50% 0%,#2a0a2a 0%,#1a0a2e 60%);}
+.weather-layer{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+.raindrop{position:absolute;width:1px;background:linear-gradient(transparent,var(--pb));animation:fall linear infinite;opacity:.7;}
+@keyframes fall{from{transform:translateY(-20px);}to{transform:translateY(220px);}}
+.snowflake{position:absolute;color:white;animation:snowfall linear infinite;opacity:.8;}
+@keyframes snowfall{from{transform:translateY(-10px) rotate(0);}to{transform:translateY(220px) rotate(360deg);}}
+.lightning{position:absolute;inset:0;background:rgba(255,255,200,.6);animation:lightning 4s infinite;opacity:0;}
+@keyframes lightning{0%,94%,98%,100%{opacity:0;}95%,97%{opacity:1;}}
+.ground{position:absolute;bottom:0;left:0;right:0;height:17px;background:repeating-linear-gradient(90deg,#1a3a1a 0,#1a3a1a 8px,#0d2a0d 8px,#0d2a0d 16px);}
+.snow-ground{position:absolute;bottom:0;left:0;right:0;height:5px;background:#ddeeff;display:none;border-radius:3px 3px 0 0;}
+.status-bar{display:flex;justify-content:space-between;font-family:'VT323',monospace;font-size:13px;color:var(--pg);z-index:5;}
+.scene{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:10px;padding-bottom:2px;position:relative;}
+.character{display:flex;flex-direction:column;align-items:center;z-index:5;cursor:pointer;transition:transform .1s;position:relative;}
+.character:hover{transform:scale(1.05);}
+.character:active{transform:scale(.95);}
+canvas.sprite{image-rendering:pixelated;image-rendering:crisp-edges;}
+.speech-bubble{position:absolute;top:-30px;background:var(--pg);color:var(--screen);padding:2px 5px;border-radius:3px;white-space:nowrap;display:none;z-index:20;font-family:'VT323',monospace;font-size:12px;}
+.speech-bubble::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border:3px solid transparent;border-top-color:var(--pg);}
+.show-bubble .speech-bubble{display:block;animation:popIn .2s ease;}
+@keyframes popIn{from{transform:scale(0);}to{transform:scale(1);}}
+.puppies-area{position:absolute;bottom:17px;left:0;right:0;display:flex;justify-content:center;gap:4px;z-index:4;pointer-events:none;}
+/* garden plots on screen */
+.garden-area{position:absolute;bottom:17px;right:4px;display:flex;gap:3px;z-index:4;pointer-events:none;}
+.plot-icon{font-size:10px;line-height:1;}
+.stat-row{display:flex;flex-direction:column;gap:2px;z-index:5;}
+.stat{display:flex;align-items:center;gap:3px;font-family:'VT323',monospace;font-size:10px;color:var(--pg);}
+.stat-label{width:13px;text-align:center;font-size:9px;}
+.bar-bg{width:54px;height:5px;background:#0a1a0a;border:1px solid #1a3a1a;overflow:hidden;}
+.bar-fill{height:100%;transition:width .5s;}
+.b-hunger{background:var(--po);}.b-happy{background:var(--py);}.b-energy{background:var(--pb);}.b-love{background:var(--pp);}
+.mood-overlay{position:absolute;top:4px;right:4px;font-size:15px;z-index:6;}
+.msg-area{font-family:'VT323',monospace;font-size:11px;color:var(--py);text-align:center;min-height:14px;z-index:5;}
+.sick-overlay{position:absolute;inset:0;z-index:7;pointer-events:none;display:none;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(0,180,0,.06) 4px,rgba(0,180,0,.06) 8px);}
+.sick-icon{position:absolute;top:4px;left:4px;font-size:13px;animation:blink .8s infinite;z-index:8;display:none;}
+.particles{position:absolute;inset:0;pointer-events:none;z-index:15;overflow:hidden;}
+.particle{position:absolute;font-size:13px;animation:floatUp 1.5s ease-out forwards;}
+@keyframes floatUp{from{opacity:1;transform:translateY(0) scale(1);}to{opacity:0;transform:translateY(-55px) scale(.5);}}
+/* TABS */
+.bottom-nav{display:flex;gap:3px;margin-top:8px;width:100%;}
+.tab-btn{flex:1;background:rgba(45,27,94,.6);border:1px solid rgba(255,110,180,.15);border-radius:7px;padding:5px 2px;cursor:pointer;font-family:'VT323',monospace;font-size:9px;color:#777;display:flex;flex-direction:column;align-items:center;gap:1px;transition:all .15s;position:relative;}
+.tab-btn.active{background:linear-gradient(145deg,var(--shell),var(--shell-dark));border-color:var(--pp);color:var(--pp);box-shadow:0 0 10px rgba(255,110,180,.3);}
+.tab-btn:active{transform:scale(.95);}
+.tab-icon{font-size:15px;line-height:1;}
+.badge{position:absolute;top:3px;right:3px;background:red;color:white;font-size:6px;padding:1px 3px;border-radius:3px;display:none;}
+.panel{display:none;}.panel.active{display:block;}
+/* CARE */
+.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding-top:4px;}
+.btn{background:linear-gradient(145deg,var(--btn),var(--btn-dark));border:none;border-radius:50%;width:46px;height:46px;cursor:pointer;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-shadow:0 5px 0 rgba(0,0,0,.5);transition:all .1s;}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.5);}
+.btn-icon{font-size:16px;line-height:1;}.btn-text{font-family:'VT323',monospace;font-size:8px;}
+.btn.blue{background:linear-gradient(145deg,#00cfff,#0088aa);}
+.btn.green{background:linear-gradient(145deg,#39ff14,#1a8a00);}
+.btn.yellow{background:linear-gradient(145deg,#ffe600,#aa9900);}
+.btn.grey{background:linear-gradient(145deg,#888,#444);}
+.wide-btn{grid-column:1/-1;border-radius:12px;width:100%;height:36px;}
+/* SHOP */
+.shop-panel{padding:3px 0;}
+.coins-display{font-family:'VT323',monospace;font-size:15px;color:var(--py);text-align:center;margin-bottom:7px;}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;max-height:128px;overflow-y:auto;}
+.shop-item{background:rgba(45,27,94,.8);border:1px solid rgba(255,110,180,.2);border-radius:7px;padding:7px 5px;text-align:center;cursor:pointer;transition:all .15s;}
+.shop-item:active{transform:scale(.95);}
+.shop-item.owned{border-color:var(--pg);background:rgba(0,50,0,.4);}
+.shop-item.equipped{border-color:var(--py);background:rgba(50,40,0,.6);}
+.shop-item .si-icon{font-size:20px;margin-bottom:3px;}
+.shop-item .si-name{font-family:'VT323',monospace;font-size:11px;color:#ccc;margin-bottom:2px;}
+.shop-item .si-price{font-family:'VT323',monospace;font-size:10px;color:var(--py);}
+.shop-item.owned .si-price,.shop-item.equipped .si-price{color:var(--pg);}
+/* MESSAGES */
+.msgs-panel{max-height:138px;overflow-y:auto;display:flex;flex-direction:column;gap:5px;padding:3px 0;}
+.msg-bubble{background:linear-gradient(135deg,rgba(255,110,180,.12),rgba(45,27,94,.6));border:1px solid rgba(255,110,180,.22);border-radius:10px 10px 10px 2px;padding:7px 9px;}
+.msg-from{font-family:'VT323',monospace;font-size:10px;color:var(--pp);margin-bottom:2px;}
+.msg-text{font-family:'VT323',monospace;font-size:13px;color:#ddeeff;line-height:1.5;}
+.msg-time{font-family:'VT323',monospace;font-size:9px;color:#445;margin-top:2px;}
+.no-msgs{font-family:'VT323',monospace;font-size:13px;color:#445;text-align:center;padding:18px 0;}
+/* PUPPIES */
+.puppies-panel{padding:3px 0;}
+.puppy-header{font-family:'VT323',monospace;font-size:12px;color:var(--pp);text-align:center;margin-bottom:7px;}
+.puppy-list{display:flex;flex-direction:column;gap:4px;max-height:100px;overflow-y:auto;}
+.puppy-row{display:flex;align-items:center;gap:7px;background:rgba(45,27,94,.6);border:1px solid rgba(255,110,180,.15);border-radius:7px;padding:5px 7px;}
+.puppy-canvas{image-rendering:pixelated;}
+.puppy-name{font-family:'VT323',monospace;font-size:13px;color:var(--pg);}
+.puppy-age{font-family:'VT323',monospace;font-size:10px;color:#666;}
+.no-puppies{font-family:'VT323',monospace;font-size:12px;color:#445;text-align:center;padding:8px 0;line-height:1.8;}
+.breed-btn{background:linear-gradient(145deg,var(--pp),var(--btn-dark));border:none;border-radius:7px;padding:6px;font-family:'VT323',monospace;font-size:12px;color:white;cursor:pointer;width:100%;margin-top:4px;box-shadow:0 4px 0 rgba(0,0,0,.4);transition:all .1s;}
+.breed-btn:active{transform:translateY(3px);}
+.breed-btn:disabled{background:linear-gradient(145deg,#555,#333);cursor:not-allowed;}
+/* GARDEN */
+.garden-panel{padding:3px 0;}
+.garden-title{font-family:'VT323',monospace;font-size:12px;color:var(--pg);text-align:center;margin-bottom:6px;}
+.garden-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:6px;}
+.plot{background:rgba(20,40,10,.8);border:1px solid #1a3a1a;border-radius:7px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .15s;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.plot:active{transform:scale(.95);}
+.plot .p-icon{font-size:22px;margin-bottom:2px;}
+.plot .p-name{font-family:'VT323',monospace;font-size:10px;color:#88cc88;}
+.plot .p-status{font-family:'VT323',monospace;font-size:9px;color:#557755;}
+.plot.ready{border-color:var(--py);background:rgba(40,40,0,.8);animation:glow .8s infinite alternate;}
+@keyframes glow{from{box-shadow:none;}to{box-shadow:0 0 8px var(--py);}}
+.plot.empty{border-style:dashed;opacity:.6;}
+.seed-picker{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:6px;}
+.seed-opt{background:rgba(45,27,94,.8);border:1px solid rgba(57,255,20,.2);border-radius:6px;padding:5px 8px;cursor:pointer;font-family:'VT323',monospace;font-size:11px;color:#88cc88;transition:all .15s;}
+.seed-opt:active{transform:scale(.95);}
+/* DAILY CHALLENGE */
+.challenge-panel{padding:3px 0;}
+.challenge-card{background:linear-gradient(135deg,rgba(255,200,0,.1),rgba(45,27,94,.7));border:1px solid rgba(255,200,0,.3);border-radius:10px;padding:10px;margin-bottom:6px;}
+.ch-title{font-family:'VT323',monospace;font-size:12px;color:var(--py);margin-bottom:4px;}
+.ch-text{font-family:'VT323',monospace;font-size:14px;color:#ddeeff;line-height:1.5;margin-bottom:6px;}
+.ch-reward{font-family:'VT323',monospace;font-size:12px;color:var(--py);}
+.ch-progress{font-family:'VT323',monospace;font-size:11px;color:#888;margin-top:4px;}
+.ch-done{font-family:'VT323',monospace;font-size:13px;color:var(--pg);text-align:center;padding:10px;border:1px solid var(--pg);border-radius:8px;background:rgba(0,50,0,.3);}
+/* ZAMBIAN WORD */
+.word-card{background:linear-gradient(135deg,rgba(255,110,180,.1),rgba(45,27,94,.7));border:1px solid rgba(255,110,180,.3);border-radius:10px;padding:10px;}
+.word-lang{font-family:'VT323',monospace;font-size:10px;color:var(--pp);margin-bottom:4px;letter-spacing:2px;}
+.word-main{font-size:14px;color:var(--py);margin-bottom:4px;text-shadow:0 0 10px rgba(255,230,0,.4);}
+.word-trans{font-family:'VT323',monospace;font-size:14px;color:#cce8ff;margin-bottom:4px;}
+.word-example{font-family:'VT323',monospace;font-size:11px;color:#778899;line-height:1.5;font-style:italic;}
+/* HIGHSCORE */
+.score-panel{padding:3px 0;}
+.score-card{background:rgba(45,27,94,.6);border:1px solid rgba(255,230,0,.2);border-radius:8px;padding:8px;margin-bottom:5px;text-align:center;}
+.score-label{font-family:'VT323',monospace;font-size:11px;color:#888;margin-bottom:3px;}
+.score-val{font-family:'VT323',monospace;font-size:20px;color:var(--py);}
+/* MINI-GAME */
+#minigame{position:fixed;inset:0;z-index:2500;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+#minigame.on{display:flex;}
+.mg-screen{background:#0a1a0a;border:3px solid var(--pg);border-radius:11px;width:min(295px,92vw);height:280px;position:relative;overflow:hidden;margin-bottom:12px;}
+.mg-status{display:flex;justify-content:space-between;width:min(295px,92vw);font-family:'VT323',monospace;font-size:15px;color:var(--pg);margin-bottom:7px;}
+.mg-target{position:absolute;font-size:30px;cursor:pointer;transition:transform .1s;user-select:none;-webkit-user-select:none;}
+.mg-target:active{transform:scale(.7);}
+.mg-timer-bar{position:absolute;bottom:0;left:0;height:4px;background:var(--pp);transition:width .1s linear;}
+.mg-start-btn{background:linear-gradient(145deg,var(--pg),#1a8a00);border:none;border-radius:50px;padding:11px 26px;font-family:'Press Start 2P',monospace;font-size:9px;color:#000;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.5);transition:all .1s;}
+.mg-start-btn:active{transform:translateY(3px);}
+.mg-close{position:absolute;top:14px;right:14px;background:rgba(255,110,180,.2);border:1px solid var(--pp);border-radius:7px;padding:5px 10px;font-family:'VT323',monospace;font-size:13px;color:var(--pp);cursor:pointer;}
+/* BIRTHDAY */
+#bday-screen{position:fixed;inset:0;z-index:3800;background:rgba(0,0,0,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+#bday-screen.on{display:flex;}
+.bday-card{background:linear-gradient(145deg,#2a0a2a,#1a0a1e);border:2px solid rgba(255,110,180,.5);border-radius:18px;padding:24px;max-width:290px;width:100%;text-align:center;box-shadow:0 0 40px rgba(255,110,180,.3);}
+.bday-icon{font-size:50px;margin-bottom:10px;animation:bounce .6s infinite;}
+.bday-title{font-size:12px;color:var(--pp);text-shadow:0 0 15px rgba(255,110,180,.8);margin-bottom:10px;}
+.bday-text{font-family:'VT323',monospace;font-size:17px;color:#ffd0ee;line-height:1.6;margin-bottom:16px;}
+.bday-btn{background:linear-gradient(145deg,var(--pp),var(--btn-dark));border:none;border-radius:50px;padding:12px;font-family:'Press Start 2P',monospace;font-size:9px;color:white;cursor:pointer;width:100%;box-shadow:0 5px 0 rgba(0,0,0,.4);transition:all .1s;}
+.bday-btn:active{transform:translateY(4px);}
+/* DEATH */
+#death-screen{position:fixed;inset:0;z-index:4000;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:22px;}
+#death-screen.on{display:flex;}
+.death-title{font-size:14px;color:#ff3333;text-shadow:0 0 20px rgba(255,0,0,.8);text-align:center;margin-bottom:14px;animation:blink 1s infinite;}
+.death-chars{font-size:42px;margin-bottom:12px;filter:grayscale(1);opacity:.4;}
+.death-card{background:#0a0a0a;border:2px solid #330000;border-radius:13px;padding:18px;max-width:285px;width:100%;text-align:center;margin-bottom:18px;}
+.death-text{font-family:'VT323',monospace;font-size:16px;color:#cc6666;line-height:1.7;}
+.death-days{font-family:'VT323',monospace;font-size:19px;color:#ff6666;margin:9px 0;}
+.death-btn{background:linear-gradient(145deg,#cc0000,#660000);border:none;border-radius:50px;padding:12px 22px;font-family:'Press Start 2P',monospace;font-size:8px;color:white;cursor:pointer;width:100%;box-shadow:0 5px 0 rgba(0,0,0,.6);transition:all .1s;}
+.death-btn:active{transform:translateY(4px);}
+#return-warning{position:fixed;inset:0;z-index:3500;background:rgba(0,0,0,.92);display:none;flex-direction:column;align-items:center;justify-content:center;padding:22px;}
+#return-warning.on{display:flex;}
+.ret-card{background:linear-gradient(145deg,#1a0f00,#0a0800);border:2px solid rgba(255,140,0,.4);border-radius:13px;padding:20px;max-width:285px;width:100%;text-align:center;}
+.ret-icon{font-size:42px;margin-bottom:9px;animation:shake .4s infinite;}
+.ret-title{font-size:10px;color:var(--po);margin-bottom:11px;}
+.ret-text{font-family:'VT323',monospace;font-size:16px;color:#ffcc88;line-height:1.6;margin-bottom:15px;}
+.ret-btn{background:linear-gradient(145deg,var(--po),#884400);border:none;border-radius:50px;padding:12px;font-family:'Press Start 2P',monospace;font-size:8px;color:white;cursor:pointer;width:100%;box-shadow:0 5px 0 rgba(0,0,0,.5);transition:all .1s;}
+.ret-btn:active{transform:translateY(4px);}
+#install-tip{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(255,110,180,.95);color:#1a0a2e;font-family:'VT323',monospace;font-size:13px;padding:9px 13px;border-radius:7px;text-align:center;max-width:265px;z-index:500;display:none;box-shadow:0 4px 20px rgba(0,0,0,.5);}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+@keyframes spin{0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+@keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:.5;}}
+.a-bounce{animation:bounce .5s ease 3;}
+.a-shake{animation:shake .15s ease 4;}
+.a-bounce{animation:bounce .5s ease 3;}.a-shake{animation:shake .15s ease 4;}.a-spin{animation:spin .4s linear 2;}
+
+/* ── UITJES ── */
+#uitje-overlay{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.96);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+#uitje-overlay.on{display:flex;}
+.uitje-card{background:linear-gradient(145deg,#1a0f3a,#0d0820);border:2px solid var(--pp);border-radius:18px;padding:20px;max-width:300px;width:100%;text-align:center;box-shadow:0 0 40px rgba(255,110,180,.3);}
+.uitje-title{font-size:11px;color:var(--pp);margin-bottom:10px;}
+.uitje-scene{font-size:52px;margin:10px 0;animation:bounce .7s infinite;}
+.uitje-text{font-family:'VT323',monospace;font-size:16px;color:#ddeeff;line-height:1.6;margin-bottom:10px;}
+.uitje-result{font-family:'VT323',monospace;font-size:14px;color:var(--py);margin-bottom:14px;}
+.uitje-btn{background:linear-gradient(145deg,var(--pp),var(--btn-dark));border:none;border-radius:50px;padding:12px;font-family:'Press Start 2P',monospace;font-size:9px;color:white;cursor:pointer;width:100%;box-shadow:0 5px 0 rgba(0,0,0,.4);transition:all .1s;}
+.uitje-btn:active{transform:translateY(4px);}
+.uitje-btn:disabled{background:linear-gradient(145deg,#444,#222);cursor:not-allowed;}
+/* mood badge on screen */
+.mood-badge{position:absolute;bottom:20px;left:4px;font-size:9px;font-family:'VT323',monospace;color:var(--py);z-index:6;opacity:.85;}
+/* uitjes tab badge */
+
+/* ── COMIC INTRO ── */
+#comic-intro{background:#111;z-index:2500;padding:0;}
+.comic-wrap{width:min(340px,98vw);max-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:12px 12px 0;}
+.comic-panel{background:#1a1a2e;border:3px solid #fff;border-radius:6px;width:100%;padding:14px 14px 10px;position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;margin-bottom:8px;}
+.comic-panel.show{opacity:1;transform:translateY(0);}
+.comic-panel .cp-scene{display:flex;align-items:flex-end;justify-content:center;gap:10px;min-height:68px;position:relative;width:100%;}
+.comic-panel .cp-text{font-family:'VT323',monospace;font-size:15px;color:#eee;text-align:center;line-height:1.55;width:100%;}
+.comic-panel .cp-caption{font-family:'VT323',monospace;font-size:12px;color:#888;text-align:center;font-style:italic;}
+.cp-bubble{position:absolute;background:white;color:#111;font-family:'VT323',monospace;font-size:13px;border-radius:10px;padding:5px 8px;line-height:1.4;max-width:130px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.4);top:-10px;left:50%;transform:translateX(-50%);}
+.cp-bubble.left{left:10px;transform:none;}
+.cp-bubble.right{left:auto;right:10px;transform:none;}
+.cp-num{position:absolute;top:-10px;left:-10px;background:var(--pp);color:white;font-size:10px;font-family:'Press Start 2P',monospace;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;}
+.comic-btns{display:flex;gap:10px;width:100%;padding-bottom:14px;}
+.comic-btn{flex:1;border:none;border-radius:50px;padding:13px 8px;font-family:'Press Start 2P',monospace;font-size:8px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.5);transition:all .1s;}
+.comic-btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.5);}
+.comic-btn.yes{background:linear-gradient(145deg,var(--pp),var(--btn-dark));color:white;}
+.comic-btn.snooze{background:linear-gradient(145deg,#444,#222);color:#aaa;}
+.zzz{position:absolute;font-family:'Press Start 2P',monospace;font-size:9px;color:#aaf;animation:floatZzz 2s ease-in-out infinite;}
+@keyframes floatZzz{0%{opacity:0;transform:translateY(0) scale(.7);}50%{opacity:1;}100%{opacity:0;transform:translateY(-22px) scale(1.1);}}
+.alarm-flash{animation:alarmFlash .5s infinite;}
+@keyframes alarmFlash{0%,100%{color:#ff4444;}50%{color:#ffaa00;}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<div class="overlay on" id="splash"><div class="sp-icon">🐾</div><div class="sp-sub">laden...</div></div>
+
+<!-- COMIC INTRO (alleen de allereerste keer) -->
+<div class="overlay" id="comic-intro">
+  <div class="comic-wrap" id="comic-wrap"></div>
+</div>
+
+<!-- WELCOME (terugkerende spelers) -->
+<div class="overlay" id="welcome">
+  <div class="w-paw">🐾</div>
+  <div class="w-card">
+    <div class="w-greeting">✨ welkom terug ✨</div>
+    <div class="w-name">SABINE</div>
+    <div class="w-divider"></div>
+    <div class="w-chars"><canvas id="wc-emma" width="40" height="60"></canvas><canvas id="wc-nigiri" width="52" height="42"></canvas></div>
+    <div class="w-text">Emma en Nigiri wachten op je!<br><br>Zorg goed voor ze. 🌸</div>
+    <button class="big-btn" onclick="startGame()">🌸 Ik ben er! 🌸</button>
+  </div>
+</div>
+
+
+<!-- UITJE OVERLAY -->
+<div id="uitje-overlay">
+  <div class="uitje-card">
+    <div class="uitje-title" id="uitje-ov-title">✈️ OP STAP!</div>
+    <div class="uitje-scene" id="uitje-ov-scene">🌴</div>
+    <div class="uitje-text" id="uitje-ov-text">Emma en Nigiri zijn op weg!</div>
+    <div class="uitje-result" id="uitje-ov-result"></div>
+    <button class="uitje-btn" id="uitje-close-btn" onclick="closeUitje()" disabled>Bezig...</button>
+  </div>
+</div>
+
+<!-- BIRTHDAY -->
+<div id="bday-screen">
+  <div class="bday-card">
+    <div class="bday-icon" id="bday-icon">🎂</div>
+    <div class="bday-title" id="bday-title">GELUKKIGE VERJAARDAG!</div>
+    <div class="bday-text" id="bday-text">Het is Emma's verjaardag!</div>
+    <button class="bday-btn" onclick="closeBday()">🎉 Gefeliciteerd!</button>
+  </div>
+</div>
+
+<!-- DEATH -->
+<div id="death-screen">
+  <div class="death-title">💀 GAME OVER 💀</div>
+  <div class="death-chars">😵 🐾</div>
+  <div class="death-card">
+    <div class="death-text">Sabine... je bent te lang weggebleven.<br><br>Emma en Nigiri hebben gewacht, maar niemand kwam.<br><br>Ze zijn er niet meer. 💔</div>
+    <div class="death-days" id="death-days"></div>
+    <div style="font-family:'VT323',monospace;font-size:14px;color:#886666;margin-top:8px;" id="death-hs"></div>
+  </div>
+  <button class="death-btn" onclick="resetGame()">↩ Opnieuw beginnen</button>
+</div>
+
+<!-- RETURN WARNING -->
+<div id="return-warning">
+  <div class="ret-card">
+    <div class="ret-icon">🤒</div>
+    <div class="ret-title">⚠ JE WAS TE LANG WEG ⚠</div>
+    <div class="ret-text">Emma en Nigiri zijn ziek geworden!<br><br>Zorg snel voor ze!</div>
+    <button class="ret-btn" onclick="dismissWarning()">😢 Sorry! Ik zorg beter!</button>
+  </div>
+</div>
+
+<!-- MINI-GAME -->
+<div id="minigame">
+  <button class="mg-close" onclick="closeMiniGame()">✕ Sluiten</button>
+  <div class="mg-status"><span>🎾 <span id="mg-score">0</span></span><span>⏱ <span id="mg-time">30</span>s</span></div>
+  <div class="mg-screen" id="mg-screen">
+    <div class="mg-timer-bar" id="mg-bar" style="width:100%"></div>
+    <div id="mg-overlay" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;">
+      <div style="font-family:'VT323',monospace;font-size:19px;color:var(--pg);text-align:center;">Tik op de ballen!<br><span style="font-size:13px;color:#777;">Elke hit = 2 munten 🪙</span></div>
+      <button class="mg-start-btn" onclick="startMiniGame()">▶ SPELEN</button>
+    </div>
+  </div>
+  <div style="font-family:'VT323',monospace;font-size:13px;color:#666;text-align:center;">Verdien munten voor de winkel!</div>
+</div>
+
+<div id="install-tip">📱 Tik <strong>Deel</strong> → <strong>Beginscherm</strong><button onclick="this.parentElement.style.display='none'" style="display:block;margin:5px auto 0;background:#1a0a2e;color:var(--pp);border:none;padding:3px 9px;border-radius:4px;font-family:'VT323',monospace;font-size:12px;cursor:pointer;">✕</button></div>
+
+<!-- GAME UI -->
+<div id="game-ui" style="display:none;flex-direction:column;align-items:center;">
+  <div style="font-family:'VT323',monospace;font-size:10px;color:var(--pp);margin-bottom:7px;letter-spacing:2px;text-shadow:0 0 10px rgba(255,110,180,.6);">✨ EMMA & NIGIRI ✨</div>
+  <div class="device">
+    <div class="screen-frame">
+      <div class="screen" id="screen">
+        <div class="sky day" id="sky"></div>
+        <div class="weather-layer" id="weather-layer"></div>
+        <div class="particles" id="particles"></div>
+        <div class="sick-overlay" id="sick-overlay"></div>
+        <div class="sick-icon" id="sick-icon">🤒</div>
+        <div class="status-bar">
+          <span id="time-disp">🌞 DAG 1</span>
+          <span id="date-disp" style="font-family:'VT323',monospace;font-size:11px;color:#39ff14;opacity:.8;"></span>
+          <span id="weather-disp">☀️</span>
+          <span id="coin-disp">🪙0</span>
+        </div>
+        <div class="scene">
+          <div class="ground"></div>
+          <div class="mood-badge" id="mood-badge"></div>
+          <div class="snow-ground" id="snow-ground"></div>
+          <div class="puppies-area" id="puppies-area"></div>
+          <div class="garden-area" id="garden-area"></div>
+          <div class="character" id="emma-char" onclick="petEmma()">
+            <div class="speech-bubble" id="emma-bubble">Hoi!</div>
+            <canvas class="sprite" id="emma-canvas" width="40" height="60"></canvas>
+          </div>
+          <div class="character" id="nigiri-char" onclick="petNigiri()">
+            <div class="speech-bubble" id="nigiri-bubble">Woof!</div>
+            <canvas class="sprite" id="nigiri-canvas" width="52" height="42"></canvas>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;z-index:5;position:relative;">
+          <div class="stat-row">
+            <div style="font-size:7px;color:var(--pg);font-family:'VT323',monospace;margin-bottom:1px;">EMMA</div>
+            <div class="stat"><span class="stat-label">🍕</span><div class="bar-bg"><div class="bar-fill b-hunger" id="e-hun" style="width:80%"></div></div></div>
+            <div class="stat"><span class="stat-label">😊</span><div class="bar-bg"><div class="bar-fill b-happy" id="e-hap" style="width:70%"></div></div></div>
+            <div class="stat"><span class="stat-label">⚡</span><div class="bar-bg"><div class="bar-fill b-energy" id="e-eng" style="width:90%"></div></div></div>
+          </div>
+          <div class="mood-overlay" id="mood-icon">😊</div>
+          <div class="stat-row" style="align-items:flex-end;">
+            <div style="font-size:7px;color:var(--pg);font-family:'VT323',monospace;margin-bottom:1px;text-align:right;">NIGIRI</div>
+            <div class="stat"><div class="bar-bg"><div class="bar-fill b-hunger" id="n-hun" style="width:75%"></div></div><span class="stat-label">🦴</span></div>
+            <div class="stat"><div class="bar-bg"><div class="bar-fill b-happy" id="n-hap" style="width:85%"></div></div><span class="stat-label">🐾</span></div>
+            <div class="stat"><div class="bar-bg"><div class="bar-fill b-love" id="n-lov" style="width:60%"></div></div><span class="stat-label">❤️</span></div>
+          </div>
+        </div>
+        <div class="msg-area" id="message">Welkom terug Sabine! 🌸</div>
+      </div>
+    </div>
+
+    <!-- TABS: 6 tabs -->
+    <div class="bottom-nav">
+      <button class="tab-btn active" onclick="switchTab('care')" id="tab-care"><span class="tab-icon">❤️</span><span>ZORG</span></button>
+      <button class="tab-btn" onclick="switchTab('shop')" id="tab-shop"><span class="tab-icon">🛍️</span><span>WINKEL</span></button>
+      <button class="tab-btn" onclick="switchTab('msgs')" id="tab-msgs"><span class="tab-icon">💌</span><span>POST</span><span class="badge" id="msg-badge">!</span></button>
+      <button class="tab-btn" onclick="switchTab('pups')" id="tab-pups"><span class="tab-icon">🐶</span><span>PUPS</span></button>
+      <button class="tab-btn" onclick="switchTab('garden')" id="tab-garden"><span class="tab-icon">🌱</span><span>TUIN</span></button>
+      <button class="tab-btn" onclick="switchTab('uitje')" id="tab-uitje"><span class="tab-icon">✈️</span><span>UITJE</span><span class="badge" id="uitje-badge">!</span></button>
+      <button class="tab-btn" onclick="switchTab('extra')" id="tab-extra"><span class="tab-icon">⭐</span><span>MEER</span><span class="badge" id="extra-badge">!</span></button>
+    </div>
+
+    <!-- CARE -->
+    <div class="panel active" id="panel-care">
+      <div class="controls">
+        <button class="btn blue" onclick="doAction('feed')"><span class="btn-icon">🍕</span><span class="btn-text">ETEN</span></button>
+        <button class="btn green" onclick="doAction('walk')"><span class="btn-icon">🦮</span><span class="btn-text">WANDELEN</span></button>
+        <button class="btn" onclick="doAction('play')"><span class="btn-icon">🎾</span><span class="btn-text">SPELEN</span></button>
+        <button class="btn yellow" onclick="doAction('sleep')"><span class="btn-icon">😴</span><span class="btn-text">SLAPEN</span></button>
+        <button class="btn grey" onclick="doAction('bath')"><span class="btn-icon">🛁</span><span class="btn-text">BAD</span></button>
+        <button class="btn" style="background:linear-gradient(145deg,#ff8c00,#884400);" onclick="doAction('treat')"><span class="btn-icon">🍖</span><span class="btn-text">SNOEP</span></button>
+        <button class="btn wide-btn" style="background:linear-gradient(145deg,#ff4488,#880022);" onclick="doAction('kudasai')"><span class="btn-icon">🍣</span><span class="btn-text">KUDASAI</span></button>
+        <button class="btn wide-btn" style="background:linear-gradient(145deg,#aa44ff,#550088);" onclick="openMiniGame()"><span class="btn-icon">🎮</span><span class="btn-text">MINI-SPEL</span></button>
+      </div>
+    </div>
+
+    <!-- SHOP -->
+    <div class="panel" id="panel-shop">
+      <div class="shop-panel">
+        <div class="coins-display">🪙 <span id="shop-coins">0</span> munten</div>
+        <div class="shop-grid" id="shop-grid"></div>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="panel" id="panel-msgs">
+      <div class="msgs-panel" id="msgs-list"><div class="no-msgs">Nog geen berichtjes...<br>Zorg goed voor ze! 💌</div></div>
+    </div>
+
+    <!-- PUPPIES -->
+    <div class="panel" id="panel-pups">
+      <div class="puppies-panel">
+        <div class="puppy-header">🐶 Nigiri's Puppy's</div>
+        <div class="puppy-list" id="puppy-list"></div>
+        <button class="breed-btn" id="breed-btn" onclick="tryBreed()">🐾 Puppy! (❤️70+)</button>
+      </div>
+    </div>
+
+    <!-- GARDEN -->
+    <div class="panel" id="panel-garden">
+      <div class="garden-panel">
+        <div class="garden-title">🌱 Emma's Tuin</div>
+        <div class="garden-grid" id="garden-grid"></div>
+        <div id="seed-section"></div>
+      </div>
+    </div>
+
+
+    <!-- UITJES -->
+    <div class="panel" id="panel-uitje">
+      <div style="padding:4px 0;">
+        <div style="font-family:'VT323',monospace;font-size:12px;color:var(--pp);text-align:center;margin-bottom:6px;">✈️ PLAN EEN UITJE</div>
+        <div style="font-family:'VT323',monospace;font-size:13px;color:#888;text-align:center;margin-bottom:8px;" id="uitje-cooldown-txt"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;max-height:130px;overflow-y:auto;" id="uitje-grid"></div>
+      </div>
+    </div>
+
+    <!-- EXTRA: daily challenge + word + highscore -->
+    <div class="panel" id="panel-extra">
+      <div style="display:flex;flex-direction:column;gap:6px;padding:3px 0;max-height:145px;overflow-y:auto;">
+        <div class="challenge-panel" id="challenge-section"></div>
+        <div class="word-card" id="word-card"></div>
+        <div class="score-panel">
+          <div style="font-family:'VT323',monospace;font-size:11px;color:var(--py);text-align:center;margin-bottom:4px;">🏆 HIGHSCORES</div>
+          <div class="score-card"><div class="score-label">Langste run (dagen)</div><div class="score-val" id="hs-days">0</div></div>
+          <div class="score-card"><div class="score-label">Meeste munten ooit</div><div class="score-val" id="hs-coins">0</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════
+// SOUND ENGINE (Web Audio API)
+// ══════════════════════════════════════
+let audioCtx = null;
+function getAudio(){
+  if(!audioCtx) try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}
+  return audioCtx;
+}
+function playTone(freq,dur=0.08,type='square',vol=0.08){
+  const ac=getAudio();if(!ac)return;
+  try{
+    const o=ac.createOscillator(),g=ac.createGain();
+    o.type=type;o.frequency.value=freq;
+    g.gain.setValueAtTime(vol,ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+dur);
+    o.connect(g);g.connect(ac.destination);
+    o.start();o.stop(ac.currentTime+dur);
+  }catch(e){}
+}
+function playClick(){playTone(440,.05,'square',.06);}
+function playHappy(){[523,659,784].forEach((f,i)=>setTimeout(()=>playTone(f,.1,'square',.07),i*80));}
+function playEat(){[330,440,.06].forEach((f,i)=>setTimeout(()=>playTone(f,.08,'triangle',.06),i*60));}
+function playSad(){[300,220,.1].forEach((f,i)=>setTimeout(()=>playTone(f,.15,'sawtooth',.04),i*100));}
+function playBirthday(){const m=[523,523,587,523,698,659];m.forEach((f,i)=>setTimeout(()=>playTone(f,.15,'square',.08),i*120));}
+function playHarvest(){[440,550,660,880].forEach((f,i)=>setTimeout(()=>playTone(f,.1,'triangle',.07),i*70));}
+function playKudasai(){[659,784,988,1047].forEach((f,i)=>setTimeout(()=>playTone(f,.12,'square',.07),i*90));}
+
+// ══════════════════════════════════════
+// STATE
+// ══════════════════════════════════════
+const SAVE_KEY='en_save_v5';
+const state={
+  emma:{hunger:80,happy:70,energy:90,sick:false},
+  nigiri:{hunger:75,happy:85,love:60,sick:false},
+  coins:0,day:1,hour:8,isNight:false,isSleeping:false,dead:false,
+  startDate:'',  // real calendar date when game started
+  outfit:null,ownedOutfits:[],puppies:[],messages:[],
+  weather:'sunny',lastBreed:0,lastMsgTime:0,
+  garden:[null,null,null,null,null,null], // 6 plots
+  lastHarvest:0,
+  challenge:{id:'',done:false,progress:0,date:''},
+  highscore:{days:0,coins:0},
+  lastWordDate:'',
+  bdayShown:''
+};
+
+// ══════════════════════════════════════
+// SAVE / LOAD
+// ══════════════════════════════════════
+function saveGame(){
+  // update highscore
+  if(state.day>state.highscore.days)state.highscore.days=state.day;
+  if(state.coins>state.highscore.coins)state.highscore.coins=state.coins;
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify({s:state,t:Date.now()}));}catch(e){}
+}
+function loadAndApplyAbsence(){
+  try{
+    const raw=localStorage.getItem(SAVE_KEY);if(!raw)return;
+    const{s:sv,t:last}=JSON.parse(raw);
+    const h=(Date.now()-last)/3600000;
+    const keys=['coins','day','hour','outfit','weather','lastBreed','lastMsgTime','lastHarvest','lastWordDate','bdayShown','startDate'];
+    keys.forEach(k=>{if(sv[k]!==undefined)state[k]=sv[k];});
+    ['ownedOutfits','puppies','messages','garden'].forEach(k=>{if(sv[k])state[k]=sv[k];});
+    if(sv.challenge)Object.assign(state.challenge,sv.challenge);
+    if(sv.highscore)Object.assign(state.highscore,sv.highscore);
+    Object.assign(state.emma,sv.emma);Object.assign(state.nigiri,sv.nigiri);
+    if(h<0.05)return;
+    if(h>=24){state.emma.hunger=state.emma.happy=state.emma.energy=0;state.nigiri.hunger=state.nigiri.happy=state.nigiri.love=0;state.dead=true;return;}
+    const p=Math.min(h*8,95);
+    state.emma.hunger=Math.max(0,state.emma.hunger-p);
+    state.emma.happy=Math.max(0,state.emma.happy-p*.6);
+    state.emma.energy=Math.max(0,state.emma.energy-p*.7);
+    state.nigiri.hunger=Math.max(0,state.nigiri.hunger-p*1.1);
+    state.nigiri.happy=Math.max(0,state.nigiri.happy-p*.8);
+    state.nigiri.love=Math.max(0,state.nigiri.love-p*.5);
+    if(h>=8){state.emma.sick=true;state.nigiri.sick=true;}
+    const tot=state.emma.hunger+state.emma.happy+state.emma.energy+state.nigiri.hunger+state.nigiri.happy+state.nigiri.love;
+    if(tot===0){state.dead=true;return;}
+    if(h>=1)addMessage('Emma',h>=12?`Je was ${Math.round(h)} uur weg! We misten je zo... 😢`:h>=4?`Al ${Math.round(h)} uur weg... 😔`:`Fijn dat je er weer bent! 💕`);
+  }catch(e){console.warn(e);}
+}
+setInterval(saveGame,30000);
+
+// ══════════════════════════════════════
+// PIXEL ART
+// ══════════════════════════════════════
+function drawEmma(mood,cid='emma-canvas'){
+  const c=document.getElementById(cid);if(!c)return;
+  const ctx=c.getContext('2d');ctx.clearRect(0,0,40,60);
+  const S=4,skin='#c68642',hair='#1a0a00',pants='#4a3080',eyes='#1a0800';
+  const si=SHOP_ITEMS.find(x=>x.id===state.outfit);
+  let shirt=si?.color||'#ff6eb4';if(mood==='sad')shirt='#6699cc';
+  const px=(x,y,w,h,col)=>{ctx.fillStyle=col;ctx.fillRect(x*S,y*S,w*S,h*S);};
+  px(2,0,6,1,hair);px(0,1,10,3,hair);px(0,4,1,1,hair);px(9,4,1,1,hair);
+  px(1,2,8,4,skin);px(3,3,1,1,eyes);px(6,3,1,1,eyes);
+  if(mood==='sad'){px(3,5,1,1,eyes);px(6,5,1,1,eyes);}
+  else{px(3,5,4,1,eyes);px(3,4,1,1,eyes);px(6,4,1,1,eyes);}
+  px(4,6,2,1,skin);
+  if(si?.hat){px(2,0,7,1,si.hat);px(1,1,8,1,si.hat);}
+  px(1,7,8,4,shirt);px(0,7,2,3,shirt);px(8,7,2,3,shirt);
+  px(1,11,8,3,pants);px(1,14,3,1,'#333');px(6,14,3,1,'#333');
+  if(mood==='sleep'){ctx.fillStyle='#00cfff';ctx.font='10px sans-serif';ctx.fillText('z',32,10);}
+}
+function drawNigiri(mood,cid='nigiri-canvas'){
+  const c=document.getElementById(cid);if(!c)return;
+  const ctx=c.getContext('2d');ctx.clearRect(0,0,52,42);
+  const S=4,body='#d4a060',dark='#8a5020',eyes='#1a1a1a',nose='#cc4444',tongue='#ff6688';
+  const px=(x,y,w,h,col)=>{ctx.fillStyle=col;ctx.fillRect(x*S,y*S,w*S,h*S);};
+  px(1,4,9,4,body);px(0,5,11,3,body);px(2,6,8,3,dark);
+  px(7,1,5,5,body);px(6,2,7,4,body);
+  px(6,0,2,3,dark);px(11,0,2,3,dark);
+  px(8,3,1,1,eyes);px(11,3,1,1,eyes);px(9,4,1,1,nose);
+  if(mood==='happy'||mood==='play')px(9,5,1,1,tongue);
+  if(mood==='happy'||mood==='play'){px(10,3,2,1,body);px(11,2,2,1,body);px(12,1,1,1,body);}
+  else px(10,4,2,1,body);
+  px(2,7,2,3,body);px(5,7,2,3,body);px(2,9,2,1,dark);px(5,9,2,1,dark);
+  if(mood==='sleep'){ctx.fillStyle='#00cfff';ctx.font='10px sans-serif';ctx.fillText('z',44,10);}
+}
+function drawPuppy(cid,color='#c8a050'){
+  const c=document.getElementById(cid);if(!c)return;
+  const ctx=c.getContext('2d');ctx.clearRect(0,0,32,26);
+  const S=2,dark='#6a4010',eyes='#1a1a1a',nose='#cc4444';
+  const px=(x,y,w,h,col)=>{ctx.fillStyle=col;ctx.fillRect(x*S,y*S,w*S,h*S);};
+  px(1,4,7,3,color);px(0,5,9,2,color);px(2,6,6,2,dark);
+  px(6,1,4,4,color);px(5,2,6,3,color);px(5,0,2,2,dark);px(9,0,2,2,dark);
+  px(7,3,1,1,eyes);px(9,3,1,1,eyes);px(8,4,1,1,nose);
+  px(1,7,2,2,color);px(4,7,2,2,color);
+}
+
+// ══════════════════════════════════════
+// WEATHER
+// ══════════════════════════════════════
+const WEATHER_POOL=['sunny','sunny','sunny','rain','snow','storm','cloud'];
+const WEATHER_ICONS={sunny:'☀️',rain:'🌧️',snow:'❄️',storm:'⛈️',cloud:'🌥️'};
+function setWeather(w){
+  state.weather=w;
+  const sky=document.getElementById('sky'),layer=document.getElementById('weather-layer'),sg=document.getElementById('snow-ground');
+  layer.innerHTML='';sg.style.display='none';
+  sky.className='sky '+(state.isNight?'night':'day');
+  if(w==='rain'||w==='storm'){
+    sky.className='sky '+(w==='storm'?'storm':'rain');
+    for(let i=0;i<18;i++){const d=document.createElement('div');d.className='raindrop';const h=8+Math.random()*28;d.style.cssText=`left:${Math.random()*100}%;height:${h}px;animation-duration:${.35+Math.random()*.35}s;animation-delay:${Math.random()*.5}s;`;layer.appendChild(d);}
+    if(w==='storm'){const l=document.createElement('div');l.className='lightning';layer.appendChild(l);}
+  }else if(w==='snow'){
+    sky.className='sky snow';sg.style.display='block';
+    for(let i=0;i<10;i++){const s=document.createElement('div');s.className='snowflake';s.textContent='❄';s.style.cssText=`left:${Math.random()*100}%;font-size:${5+Math.random()*7}px;animation-duration:${1.2+Math.random()*2}s;animation-delay:${Math.random()*2}s;`;layer.appendChild(s);}
+  }
+  document.getElementById('weather-disp').textContent=WEATHER_ICONS[w]||'☀️';
+}
+function changeWeather(){
+  const w=WEATHER_POOL[Math.floor(Math.random()*WEATHER_POOL.length)];
+  setWeather(w);
+  if(w==='storm'){state.nigiri.happy=Math.max(0,state.nigiri.happy-15);addMessage('Emma','Er is onweer! Nigiri is bang! ⛈️');}
+  if(w==='snow'){state.nigiri.happy=Math.min(100,state.nigiri.happy+10);addMessage('Emma','Het sneeuwt!! Nigiri probeert sneeuw te vangen! ❄️');}
+  if(w==='rain')addMessage('Emma','Het regent. We blijven binnen. 🌧️');
+}
+
+// ══════════════════════════════════════
+// SHOP
+// ══════════════════════════════════════
+const SHOP_ITEMS=[
+  {id:'shirt_blue',  name:'Blauwe Top',  icon:'👕',price:30,color:'#4488ff',hat:null},
+  {id:'shirt_green', name:'Groene Top',  icon:'💚',price:30,color:'#44cc44',hat:null},
+  {id:'shirt_yellow',name:'Gele Top',    icon:'💛',price:40,color:'#ffcc00',hat:null},
+  {id:'hat_red',     name:'Rode Hoed',   icon:'🎩',price:50,color:'#ff6eb4',hat:'#cc2222'},
+  {id:'hat_purple',  name:'Paarse Hoed', icon:'🪄',price:60,color:'#aa44ff',hat:'#7700cc'},
+  {id:'dress_pink',  name:'Roze Jurk',   icon:'👗',price:80,color:'#ff88cc',hat:null},
+  {id:'zambia',      name:'Zambia Print',icon:'🌍',price:100,color:'#cc6600',hat:'#cc4400'},
+  {id:'crown',       name:'Gouden Kroon',icon:'👑',price:150,color:'#ff6eb4',hat:'#ffcc00'},
+];
+function renderShop(){
+  document.getElementById('shop-coins').textContent=state.coins;
+  document.getElementById('shop-grid').innerHTML=SHOP_ITEMS.map(item=>{
+    const owned=state.ownedOutfits.includes(item.id),equipped=state.outfit===item.id;
+    let cls='shop-item';if(equipped)cls+=' equipped';else if(owned)cls+=' owned';
+    const lbl=equipped?'✓ Aan':owned?'▶ Dragen':`🪙 ${item.price}`;
+    return `<div class="${cls}" onclick="buyOrEquip('${item.id}')"><div class="si-icon">${item.icon}</div><div class="si-name">${item.name}</div><div class="si-price">${lbl}</div></div>`;
+  }).join('');
+}
+function buyOrEquip(id){
+  playClick();
+  const item=SHOP_ITEMS.find(x=>x.id===id);if(!item)return;
+  if(state.ownedOutfits.includes(id)){
+    state.outfit=(state.outfit===id)?null:id;
+    showMsg(state.outfit?`Emma draagt ${item.name}! ✨`:'Outfit uitgedaan.');
+    drawEmma('happy');playHappy();
+  }else{
+    if(state.coins<item.price){showMsg('Te weinig munten! 🪙');playSad();return;}
+    state.coins-=item.price;state.ownedOutfits.push(id);state.outfit=id;
+    drawEmma('happy');spawnParticles(['✨','🎉','👗','💕']);playHappy();
+    showMsg(`${item.name} gekocht! ✨`);
+    addMessage('Emma',`Dank je voor de ${item.name}! Ik voel me zo mooi! 💕`);
+  }
+  renderShop();updateCoins();saveGame();
+}
+function updateCoins(){
+  document.getElementById('coin-disp').textContent=`🪙${state.coins}`;
+  const el=document.getElementById('shop-coins');if(el)el.textContent=state.coins;
+  if(state.coins>state.highscore.coins)state.highscore.coins=state.coins;
+  renderHighscore();
+}
+
+// ══════════════════════════════════════
+// KOOSNAAMPJES & STEMMINGEN
+// ══════════════════════════════════════
+const KOOSNAMEN=['Flexer','Treehouse','Snacker','De Bima','Trexer','Trexie','Flexhouse'];
+function koos(){return KOOSNAMEN[Math.floor(Math.random()*KOOSNAMEN.length)];}
+
+const MOODS=['blij','dramaqueen','nostalgisch','enthousiast','flirterig'];
+let emmaMood='blij';
+let moodTimer=0;
+
+function updateEmmasMood(){
+  moodTimer++;
+  if(moodTimer>4){
+    moodTimer=0;
+    const w=[40,15,20,15,10];
+    const total=w.reduce((a,b)=>a+b,0);
+    let r=Math.random()*total;
+    for(let i=0;i<MOODS.length;i++){r-=w[i];if(r<=0){emmaMood=MOODS[i];break;}}
+  }
+  renderMoodBadge();
+}
+
+function renderMoodBadge(){
+  const el=document.getElementById('mood-badge');if(!el)return;
+  const icons={blij:'',dramaqueen:'🎭 DRAMA',nostalgisch:'🌍 ZAMBIA',enthousiast:'🤩 YAY',flirterig:'😏 FLIRT'};
+  el.textContent=icons[emmaMood]||'';
+}
+
+const ROMANTISCH=[
+  k=>`${k}, ik denk de hele dag aan jou. Soms zelfs als ik aan het winkelen ben. Soms. 👠💕`,
+  k=>`Hé ${k}... Nigiri mist je ook hoor. Maar ik meer. Niet doorvertellen. 🤫❤️`,
+  k=>`${k}, weet je wat ik zo fijn aan jou vind? Dat jij er bent. En dat je mijn outfit altijd mooi vindt. 💁🏾✨`,
+  k=>`Ik stuurde Nigiri een kusje van jou. Ze keek verward. Ik vond het schattig. 🐾💋`,
+  k=>`${k}... soms kijk ik naar Nigiri en denk ik: jij lijkt een beetje op haar. Lief en een beetje lui. 😏🐶`,
+  k=>`Ik heb vandaag iets nieuws gepast in de winkel. Het was perfect. Jij zou het ook mooi vinden. Toch? 👗`,
+  k=>`${k}, als ik jou mis doe ik Nigiri aan voor een knuffel. Ze bijt niet. Heel soms. 💕`,
+  k=>`Je bent mijn favoriete persoon. Na mezelf. En na die ene tas die ik wil. 👜😘`,
+  k=>`Goede morgen ${k}! Nigiri heeft al je sokken versleept. Ik ook. Kusje! 🧦💋`,
+  k=>`${k}, ik heb een nieuwe favoriete plek gevonden. Naast jou op de bank. Ook als Nigiri ertussen ligt. 🛋️🐾`,
+  k=>`${k}... stil. Ik ben aan het genieten. Van jou. Van het leven. Van deze outfit. 😌✨`,
+  k=>`Weet je wat ik vannacht droomde, ${k}? Dat we samen winkelden. Het was een goede droom. 🛍️💕`,
+];
+
+const DRAMA_MSGS=[
+  'Dit is het ergste wat me ooit is overkomen. Nigiri heeft mijn lievelingsschoenen gepakt. Ik kan niet meer. 👠😭',
+  'Het regent. SABINE. Het REGENT. Hoe moet ik nu de straat op? Dit is een ramp. ☔🎭',
+  'Nigiri wil NIET naar buiten. Ik wil WEL. Dit is een conflict. Een groot conflict. 😤',
+  'Ik heb drie uur naar mijn kast gestaard. Er is NIETS om aan te trekken. Het leven is zwaar. 👗😩',
+  'Sabine, ik heb honger. Dit is urgent. Een crisis. Stuur hulp. Of pizza. 🍕🚨',
+  'Nigiri heeft mijn plek op de bank ingenomen. Ik sta nu. In mijn eigen huis. Onacceptabel. 🛋️😤',
+  'Ik brak een nagel. Dit is het ergste van mijn leven. Nigiri begrijpt het niet. Niemand begrijpt het. 💅😭',
+];
+
+const ZAMBIA_MSGS=[
+  'Ik dacht vandaag aan Zambia. De lucht daar. De kleuren. Hier regent het. 🌍😔',
+  'Weet je nog Maulidi Village? Ik mis het soms zo. De mensen, het geluid, de warmte. 🌅',
+  'Nigiri zou dol zijn op de South Luangwa. Alle dieren om achterna te rennen! 🦁🐾',
+  'Ik droomde vannacht van de Luangwa rivier. Ik werd wakker met heimwee. 🌊🌍',
+  'Soms zeg ik zikomo tegen Nigiri. Ze kwispelt altijd. Ik denk dat ze het snapt. 🐶💕',
+  'Vandaag zag ik een zonsondergang die me aan Zambia deed denken. Even stilgestaan. 🌇🌍',
+  'Mauya betekent welkom. Zambia zit in mijn hart. Altijd. 🇿🇲❤️',
+];
+
+const ENTHOUSIAST_MSGS=[
+  k=>`${k}!! Ik heb iets GEWELDIGS gevonden in de winkel!! Het is perfect. Dat is het. Perfect. 🛍️🤩`,
+  k=>`SABINE. Ik heb een idee. We gaan iets nieuws doen. Ik weet nog niet wat. Maar het wordt EPISCH. 🎉`,
+  k=>`${k}!! Nigiri heeft zojuist iets hilarisch gedaan. Je had erbij moeten zijn. 😂🐾`,
+  k=>`Nieuw recept voor Nigiri: alles wat ze lekker vindt op een rij. Chef Emma. 👩🏾‍🍳🍣`,
+  k=>`NIEUW PLAN ${k}: ik ga de tuin herontwerpen. Nigiri is consultant. Ze heeft al iets omgestoten. Goed begin. 🌱🐶`,
+];
+
+// ══════════════════════════════════════
+// ZAMBIAANSE FEESTDAGEN
+// ══════════════════════════════════════
+const ZAMBIA_HOLIDAYS=[
+  {month:1, day:1,  emoji:'🎆', name:'Nieuwjaarsdag',         msg:'Mwaka Uwa! Gelukkig Nieuwjaar! 🎆 Emma en Nigiri wensen je een fantastisch jaar! 🌟'},
+  {month:3, day:8,  emoji:'💜', name:'Vrouwendag',            msg:"Happy Women's Day, Flexer! 💜 Emma zegt: elke dag is vrouwendag. Nigiri kwispelt. 🐾"},
+  {month:3, day:12, emoji:'🇿🇲',name:'Youth Day Zambia',      msg:'Youth Day in Zambia! 🇿🇲 Emma is nostalgisch. Nigiri kwispelt toch. 🌍'},
+  {month:4, day:22, emoji:'🌍', name:'Aarde Dag',             msg:'Happy Earth Day! 🌍 Emma zegt: zorg voor de aarde, net zoals jij voor ons zorgt, Trexie. 💚'},
+  {month:5, day:25, emoji:'🌍', name:'Africa Day',            msg:'Africa Day! 🌍 Emma is trots vandaag. Zambia in haar hart. Altijd. 🇿🇲❤️'},
+  {month:10,day:24, emoji:'🇿🇲',name:'Zambia Independence Day',msg:'ZAMBIA INDEPENDENCE DAY!! 🇿🇲🎉 Emma is TROTS!! Mukulumpe! Lang leve Zambia! 🌍✨'},
+  {month:12,day:25, emoji:'🎄', name:'Kerst',                 msg:'Vrolijk kerstfeest, Trexie! 🎄 Emma en Nigiri liggen onder de boom. Nigiri eet de slingers. 🐾😂'},
+  {month:12,day:31, emoji:'🥂', name:'Oudejaarsavond',        msg:'Oudejaarsavond! 🥂 Emma heeft al drie outfits gepast voor vanavond. Nigiri slaapt al. 🐶💤'},
+];
+
+function checkZambiaHoliday(){
+  const now=new Date();
+  const m=now.getMonth()+1,d=now.getDate();
+  const h=ZAMBIA_HOLIDAYS.find(x=>x.month===m&&x.day===d);
+  const key='hol_'+m+'_'+d+'_'+now.getFullYear();
+  if(h){try{if(!localStorage.getItem(key)){localStorage.setItem(key,'1');setTimeout(()=>{addMessage('Emma',h.msg);spawnParticles([h.emoji,'🎉','✨','🌟']);showMsg(h.name+' '+h.emoji);},3000);}}catch(e){}}
+}
+
+// ══════════════════════════════════════
+// UITJES
+// ══════════════════════════════════════
+const UITJES=[
+  {id:'tt',     icon:'🌴',name:'Trinidad',   cost:40,dur:8000,
+   desc:'Emma en Nigiri vliegen naar Trinidad! Stranden, rum en carnaval!',
+   result:k=>`${k}, Trinidad was GEWELDIG!! Nigiri probeerde een flamingo te achtervolgen. 🌴🐾`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+35);state.nigiri.happy=Math.min(100,state.nigiri.happy+30);state.coins+=15;}},
+  {id:'safari', icon:'🦁',name:'Safari',     cost:35,dur:7000,
+   desc:'Op safari in South Luangwa! Emma is nostalgisch. Nigiri is OPGEWONDEN.',
+   result:k=>`${k}, ik huilde een beetje. Van geluk. En omdat Nigiri een olifant probeerde te blaffen. 🦁🌍`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+40);state.nigiri.happy=Math.min(100,state.nigiri.happy+45);state.nigiri.love=Math.min(100,state.nigiri.love+20);state.coins+=12;}},
+  {id:'japan',  icon:'🗾',name:'Japan',      cost:50,dur:9000,
+   desc:'Emma en Nigiri naar Japan! Sushi buffet en Emma shopt Harajuku.',
+   result:k=>`${k}!! Japan was een DROOM!! Nigiri heeft 8 soorten sushi gegeten. Ik ook. 🍣🗾`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+45);state.nigiri.hunger=Math.min(100,state.nigiri.hunger+50);state.nigiri.love=Math.min(100,state.nigiri.love+25);state.coins+=18;}},
+  {id:'resto',  icon:'🍽️',name:'Restaurant', cost:20,dur:5000,
+   desc:'Etentje bij een chic restaurant. Emma heeft haar mooiste outfit aan.',
+   result:k=>`Heerlijk gegeten, ${k}! Nigiri mocht niet naar binnen. Ze wachtte twee tellen buiten. 🍽️🐾`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+25);state.emma.hunger=Math.min(100,state.emma.hunger+30);state.nigiri.hunger=Math.min(100,state.nigiri.hunger+20);state.coins+=8;}},
+  {id:'shop',   icon:'🛍️',name:'Winkelen',   cost:25,dur:6000,
+   desc:'Emma gaat winkelen! Nigiri past op de tassen. Ze vindt het eigenlijk ok.',
+   result:k=>`${k}, ik heb iets PRACHTIGS gevonden. En nog iets. En nog iets. Nigiri droeg alles. 🛍️👠`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+35);state.coins+=5;}},
+  {id:'strand', icon:'🏖️',name:'Strand',     cost:15,dur:5000,
+   desc:'Een dagje strand! Emma in haar mooiste badpak. Nigiri graaft meteen gaten.',
+   result:k=>`${k}, heerlijk! Nigiri heeft drie zandkastelen vernield. Ik heb een selfie gemaakt. 🏖️☀️`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+30);state.emma.energy=Math.min(100,state.emma.energy+20);state.nigiri.happy=Math.min(100,state.nigiri.happy+35);state.coins+=6;}},
+  {id:'bios',   icon:'🎬',name:'Bioscoop',   cost:15,dur:4000,
+   desc:'Avondje bioscoop! Emma kiest de film. Nigiri slaapt halverwege.',
+   result:k=>`Mooie film, ${k}! Nigiri snurkte tijdens de spannendste scène. Iedereen vond het grappig. 🎬🐾`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+20);state.nigiri.happy=Math.min(100,state.nigiri.happy+15);state.emma.energy=Math.min(100,state.emma.energy+10);state.coins+=5;}},
+  {id:'park',   icon:'🌳',name:'Park',       cost:8, dur:4000,
+   desc:'Lekker naar het park! Gratis en toch gezellig. Nigiri is al weg.',
+   result:k=>`Zo fijn in het park, ${k}! Nigiri heeft 4 eekhoorntjes nagejaagd. Geen gevangen. 🌳🐿️`,
+   fx(){state.emma.happy=Math.min(100,state.emma.happy+20);state.nigiri.happy=Math.min(100,state.nigiri.happy+30);state.nigiri.love=Math.min(100,state.nigiri.love+15);state.coins+=3;}},
+];
+
+let uitjeActive=false;
+let lastUitjeTime=0;
+const UITJE_CD=300000;
+
+function renderUitjePanel(){
+  const grid=document.getElementById('uitje-grid');
+  const coolTxt=document.getElementById('uitje-cooldown-txt');
+  if(!grid)return;
+  const now=Date.now();
+  const rem=UITJE_CD-(now-lastUitjeTime);
+  if(rem>0&&lastUitjeTime>0){
+    coolTxt.textContent='Volgende uitje over '+Math.ceil(rem/60000)+' min ⏱';
+    grid.innerHTML='<div style="font-family:\'VT323\',monospace;font-size:14px;color:#555;text-align:center;grid-column:1/-1;padding:10px;">Emma en Nigiri zijn nog aan het bijkomen... 😴</div>';
+    return;
+  }
+  coolTxt.textContent='Kies een uitje! 🧳';
+  grid.innerHTML=UITJES.map(u=>'<div onclick="startUitje(\''+u.id+'\')" style="background:rgba(45,27,94,.7);border:1px solid rgba(255,110,180,.2);border-radius:8px;padding:8px 6px;text-align:center;cursor:pointer;" ontouchstart="this.style.opacity=\'.7\'" ontouchend="this.style.opacity=\'1\'"><div style="font-size:22px;margin-bottom:2px;">'+u.icon+'</div><div style="font-family:\'VT323\',monospace;font-size:12px;color:#ddd;">'+u.name+'</div><div style="font-family:\'VT323\',monospace;font-size:11px;color:var(--py);">🪙 '+u.cost+'</div></div>').join('');
+}
+
+function startUitje(id){
+  const u=UITJES.find(x=>x.id===id);if(!u)return;
+  if(uitjeActive){showMsg('Al op uitje! ✈️');return;}
+  if(state.coins<u.cost){showMsg('Te weinig munten! 🪙');playSad();return;}
+  if(Date.now()-lastUitjeTime<UITJE_CD&&lastUitjeTime>0){showMsg('Even uitrusten voor een nieuw uitje! ⏱');return;}
+  playClick();
+  state.coins-=u.cost;updateCoins();uitjeActive=true;
+  document.getElementById('uitje-ov-title').textContent='✈️ '+u.name.toUpperCase();
+  document.getElementById('uitje-ov-scene').textContent=u.icon;
+  document.getElementById('uitje-ov-text').textContent=u.desc;
+  document.getElementById('uitje-ov-result').textContent='';
+  const btn=document.getElementById('uitje-close-btn');
+  btn.disabled=true;btn.textContent='Bezig...';
+  document.getElementById('uitje-overlay').classList.add('on');
+  drawEmma('sleep');drawNigiri('sleep');
+  spawnParticles([u.icon,'✈️','🌟','💫']);
+  setTimeout(()=>{
+    u.fx();
+    const res=typeof u.result==='function'?u.result(koos()):u.result;
+    document.getElementById('uitje-ov-result').textContent=res;
+    document.getElementById('uitje-ov-scene').textContent=u.icon+'✨';
+    btn.disabled=false;btn.textContent='🏠 Weer thuis!';
+    addMessage('Emma',res);updateCoins();lastUitjeTime=Date.now();saveGame();
+  },u.dur);
+}
+
+function closeUitje(){
+  playClick();
+  document.getElementById('uitje-overlay').classList.remove('on');
+  uitjeActive=false;
+  drawEmma('happy');drawNigiri('happy');
+  spawnParticles(['🏠','💕','✨','🌸']);
+  showMsg('Welkom thuis! 🏠💕');
+  renderUitjePanel();
+}
+
+// ══════════════════════════════════════
+// MESSAGES
+// ══════════════════════════════════════
+function addMessage(from,text){
+  state.messages.unshift({from,text,time:Date.now()});
+  if(state.messages.length>20)state.messages.pop();
+  document.getElementById('msg-badge').style.display='inline';
+  renderMessages();
+}
+function renderMessages(){
+  const list=document.getElementById('msgs-list');
+  if(!state.messages.length){list.innerHTML='<div class="no-msgs">Nog geen berichtjes...<br>Zorg goed voor ze! 💌</div>';return;}
+  list.innerHTML=state.messages.map(m=>'<div class="msg-bubble"><div class="msg-from">'+(m.from==='Emma'?'💁🏾 Emma':'🐶 Nigiri')+'</div><div class="msg-text">'+m.text+'</div><div class="msg-time">'+timeAgo(m.time)+'</div></div>').join('');
+}
+function timeAgo(t){
+  const s=Math.floor((Date.now()-t)/1000);
+  if(s<60)return'Zojuist';if(s<3600)return Math.floor(s/60)+'m geleden';
+  if(s<86400)return Math.floor(s/3600)+'u geleden';return Math.floor(s/86400)+'d geleden';
+}
+function getEmmaMsg(){
+  const k=koos();
+  switch(emmaMood){
+    case 'dramaqueen':  return DRAMA_MSGS[Math.floor(Math.random()*DRAMA_MSGS.length)];
+    case 'nostalgisch': return ZAMBIA_MSGS[Math.floor(Math.random()*ZAMBIA_MSGS.length)];
+    case 'enthousiast': return ENTHOUSIAST_MSGS[Math.floor(Math.random()*ENTHOUSIAST_MSGS.length)](k);
+    default:            return ROMANTISCH[Math.floor(Math.random()*ROMANTISCH.length)](k);
+  }
+}
+function maybySendMessage(){
+  const now=Date.now();
+  if(now-state.lastMsgTime>90000){
+    updateEmmasMood();
+    const avg=(state.emma.happy+state.nigiri.happy)/2;
+    if(avg>40&&Math.random()<.4){addMessage('Emma',getEmmaMsg());state.lastMsgTime=now;}
+    if(state.nigiri.love>70&&Math.random()<.2){addMessage('Nigiri',['Woef! 🐾','...sushi? 🍣','*kwispelt heftig*','Woef woef!! ❤️','Zzz 💤'][Math.floor(Math.random()*5)]);state.lastMsgTime=now;}
+  }
+}
+
+// PUPPIES
+// ══════════════════════════════════════
+const PUP_NAMES=['Mochi','Soba','Ramen','Tofu','Sake','Yuzu','Matcha','Daikon','Wasabi','Katsu'];
+const PUP_COLORS=['#d4a060','#c08040','#b09060','#dab870','#9a7040','#e0b880'];
+function tryBreed(){
+  playClick();
+  const now=Date.now();
+  if(now-state.lastBreed<300000){showMsg(`Nog ${Math.ceil((300000-(now-state.lastBreed))/60000)} min wachten! ⏱`);return;}
+  if(state.nigiri.love<70){showMsg('Nigiri heeft meer liefde nodig! ❤️');playSad();return;}
+  if(state.puppies.length>=4){showMsg('Al 4 pups! 🐶');return;}
+  const name=PUP_NAMES[Math.floor(Math.random()*PUP_NAMES.length)];
+  const color=PUP_COLORS[Math.floor(Math.random()*PUP_COLORS.length)];
+  state.puppies.push({name,color,born:Date.now()});
+  state.lastBreed=now;state.nigiri.love=Math.max(0,state.nigiri.love-20);
+  spawnParticles(['🐶','💕','✨','🎉']);playHappy();
+  addMessage('Emma',`Nigiri heeft een puppy gekregen! We noemen haar ${name}! 🐶💕`);
+  showMsg(`Welkom ${name}! 🐶`);renderPuppies();saveGame();
+}
+function renderPuppies(){
+  const list=document.getElementById('puppy-list'),btn=document.getElementById('breed-btn');
+  if(!state.puppies.length){list.innerHTML='<div class="no-puppies">Nog geen puppy\'s!<br>Zorg goed voor Nigiri 🐾</div>';btn.disabled=false;renderPuppiesScreen();return;}
+  list.innerHTML=state.puppies.map((p,i)=>{const age=Math.floor((Date.now()-p.born)/86400000);return`<div class="puppy-row"><canvas class="puppy-canvas" id="pc-${i}" width="32" height="26"></canvas><div><div class="puppy-name">🐶 ${p.name}</div><div class="puppy-age">${age===0?'Pasgeboren!':age+' dag(en)'}</div></div></div>`;}).join('');
+  state.puppies.forEach((p,i)=>setTimeout(()=>drawPuppy(`pc-${i}`,p.color),50));
+  btn.disabled=state.puppies.length>=4;renderPuppiesScreen();
+}
+function renderPuppiesScreen(){
+  const area=document.getElementById('puppies-area');
+  area.innerHTML=state.puppies.map((p,i)=>`<canvas id="sp-${i}" width="32" height="26" style="image-rendering:pixelated;"></canvas>`).join('');
+  state.puppies.forEach((p,i)=>setTimeout(()=>drawPuppy(`sp-${i}`,p.color),60));
+}
+
+// ══════════════════════════════════════
+// GARDEN
+// ══════════════════════════════════════
+const SEEDS=[
+  {id:'tomato', name:'Tomaat', icon:'🍅', growTime:120000, reward:15, food:20},
+  {id:'maize',  name:'Maïs',  icon:'🌽', growTime:180000, reward:20, food:25},
+  {id:'mango',  name:'Mango', icon:'🥭', growTime:300000, reward:30, food:30},
+  {id:'sweet_potato',name:'Zoete Aardappel',icon:'🍠',growTime:240000,reward:25,food:22},
+  {id:'beans',  name:'Bonen', icon:'🫘', growTime:150000, reward:18, food:18},
+];
+let selectedPlot=-1;
+
+function renderGarden(){
+  const grid=document.getElementById('garden-grid');
+  const seedSec=document.getElementById('seed-section');
+  grid.innerHTML=state.garden.map((plot,i)=>{
+    if(!plot)return`<div class="plot empty" onclick="selectPlot(${i})"><div class="p-icon">🟫</div><div class="p-name">Leeg</div><div class="p-status">Tik om te planten</div></div>`;
+    const seed=SEEDS.find(s=>s.id===plot.seedId);
+    const elapsed=Date.now()-plot.planted;
+    const pct=Math.min(100,Math.floor(elapsed/seed.growTime*100));
+    const ready=elapsed>=seed.growTime;
+    if(ready)return`<div class="plot ready" onclick="harvest(${i})"><div class="p-icon">${seed.icon}</div><div class="p-name">${seed.name}</div><div class="p-status">✓ Oogsten!</div></div>`;
+    const stage=pct<33?'🌱':pct<66?'🌿':'🌾';
+    return`<div class="plot" onclick="selectPlot(${i})"><div class="p-icon">${stage}</div><div class="p-name">${seed.name}</div><div class="p-status">${pct}%</div></div>`;
+  }).join('');
+
+  // render garden icons on screen
+  const area=document.getElementById('garden-area');
+  area.innerHTML=state.garden.slice(0,3).map(plot=>{
+    if(!plot)return'';
+    const seed=SEEDS.find(s=>s.id===plot.seedId);
+    const ready=(Date.now()-plot.planted)>=seed.growTime;
+    return`<div class="plot-icon">${ready?seed.icon:'🌱'}</div>`;
+  }).join('');
+
+  if(selectedPlot>=0&&!state.garden[selectedPlot]){
+    seedSec.innerHTML=`<div class="seed-picker">${SEEDS.map(s=>`<div class="seed-opt" onclick="plant(${selectedPlot},'${s.id}')">${s.icon} ${s.name}<br><span style="color:#666;">⏱${Math.round(s.growTime/60000)}m 🪙${s.reward}</span></div>`).join('')}</div>`;
+  }else{seedSec.innerHTML='';}
+}
+
+function selectPlot(i){
+  playClick();
+  if(state.garden[i]){harvest(i);return;}
+  selectedPlot=i;renderGarden();
+}
+
+function plant(plotIdx,seedId){
+  playClick();
+  state.garden[plotIdx]={seedId,planted:Date.now()};
+  selectedPlot=-1;renderGarden();showMsg('Geplant! 🌱');saveGame();
+}
+
+function harvest(i){
+  const plot=state.garden[i];if(!plot)return;
+  const seed=SEEDS.find(s=>s.id===plot.seedId);
+  if((Date.now()-plot.planted)<seed.growTime){showMsg('Nog niet klaar! 🌱');return;}
+  state.garden[i]=null;
+  state.coins+=seed.reward;
+  state.emma.hunger=Math.min(100,state.emma.hunger+seed.food);
+  state.emma.happy=Math.min(100,state.emma.happy+10);
+  spawnParticles([seed.icon,'✨','🪙']);playHarvest();
+  showMsg(`${seed.name} geoogst! +${seed.reward} munten! 🎉`);
+  addMessage('Emma',`Ik heb ${seed.name} geoogst uit de tuin! Lekker! ${seed.icon}`);
+  updateCoins();renderGarden();saveGame();
+}
+
+// ══════════════════════════════════════
+// DAILY CHALLENGE
+// ══════════════════════════════════════
+const CHALLENGES=[
+  {id:'feed5',    text:'Geef Emma 5x te eten',          action:'feed',  target:5,  reward:25},
+  {id:'walk3',    text:'Ga 3x wandelen met Nigiri',      action:'walk',  target:3,  reward:30},
+  {id:'play4',    text:'Speel 4x met Nigiri',            action:'play',  target:4,  reward:25},
+  {id:'kudasai2', text:'Geef Nigiri 2x sushi (kudasai)', action:'kudasai',target:2, reward:40},
+  {id:'bath2',    text:'Was Nigiri 2x',                  action:'bath',  target:2,  reward:20},
+  {id:'harvest1', text:'Oogst iets uit de tuin',         action:'harvest',target:1, reward:35},
+  {id:'pet5',     text:'Knuffel Emma of Nigiri 5x',      action:'pet',   target:5,  reward:20},
+  {id:'treat3',   text:'Geef Nigiri 3x een snoepje',     action:'treat', target:3,  reward:25},
+];
+
+function todayStr(){return new Date().toISOString().split('T')[0];}
+
+function initChallenge(){
+  const today=todayStr();
+  if(state.challenge.date!==today){
+    const ch=CHALLENGES[Math.floor(Math.random()*CHALLENGES.length)];
+    state.challenge={id:ch.id,done:false,progress:0,date:today};
+  }
+  renderChallenge();
+}
+
+function progressChallenge(action){
+  if(state.challenge.done||state.challenge.date!==todayStr())return;
+  const ch=CHALLENGES.find(c=>c.id===state.challenge.id);
+  if(!ch)return;
+  if(ch.action===action){
+    state.challenge.progress++;
+    if(state.challenge.progress>=ch.target){
+      state.challenge.done=true;
+      state.coins+=ch.reward;updateCoins();
+      spawnParticles(['🏆','⭐','🪙','🎉']);playHappy();
+      showMsg(`Uitdaging voltooid! +${ch.reward} munten! 🏆`);
+      addMessage('Emma',`Sabine heeft de dagelijkse uitdaging voltooid! 🏆🌟`);
+      document.getElementById('extra-badge').style.display='none';
+    }
+    renderChallenge();saveGame();
+  }
+}
+
+function renderChallenge(){
+  const sec=document.getElementById('challenge-section');if(!sec)return;
+  const today=todayStr();
+  if(state.challenge.date!==today){initChallenge();return;}
+  const ch=CHALLENGES.find(c=>c.id===state.challenge.id);if(!ch)return;
+  if(state.challenge.done){
+    sec.innerHTML=`<div class="ch-done">✓ Uitdaging voltooid!<br>Kom morgen terug! 🌟</div>`;
+  }else{
+    sec.innerHTML=`<div class="challenge-card"><div class="ch-title">📅 DAGELIJKSE UITDAGING</div><div class="ch-text">${ch.text}</div><div class="ch-reward">Beloning: 🪙 ${ch.reward} munten</div><div class="ch-progress">Voortgang: ${state.challenge.progress}/${ch.target}</div></div>`;
+  }
+}
+
+// ══════════════════════════════════════
+// ZAMBIAN WORDS
+// ══════════════════════════════════════
+const ZAMBIAN_WORDS=[
+  {word:'Zikomo',  lang:'Nyanja',  trans:'Dankjewel',    example:'Zikomo, Sabine! (Dankjewel, Sabine!)'},
+  {word:'Muli bwanji?',lang:'Nyanja',trans:'Hoe gaat het?',example:'Muli bwanji? — Ndili bwino! (Ik ga goed!)'},
+  {word:'Mwauka bwanji?',lang:'Nyanja',trans:'Goedemorgen',example:'Mwauka bwanji? Zikomo! (Goedemorgen! Dankjewel!)'},
+  {word:'Tione',   lang:'Nyanja',  trans:'Tot ziens',    example:'Tione! Sabine tione! (Tot ziens!)'},
+  {word:'Inde',    lang:'Nyanja',  trans:'Ja',           example:'Inde, ndidzabwera (Ja, ik kom)'},
+  {word:'Ayi',     lang:'Nyanja',  trans:'Nee',          example:'Ayi, zikomo (Nee, dankjewel)'},
+  {word:'Chabwino',lang:'Nyanja',  trans:'Goed/Prima',   example:'Chabwino! (Prima! / Oké!)'},
+  {word:'Inu',     lang:'Nyanja',  trans:'Jij/U',        example:'Inu muli bwanji? (Hoe gaat het met jou?)'},
+  {word:'Pang\'ono',lang:'Nyanja', trans:'Een beetje',   example:'Pang\'ono pang\'ono (Stap voor stap / Rustig aan)'},
+  {word:'Bwana',   lang:'Swahili', trans:'Meneer/Baas',  example:'Bwana mkubwa (Grote baas)'},
+  {word:'Musanga', lang:'Bemba',   trans:'Snel/Vlug',    example:'Musanga! (Snel! / Kom op!)'},
+  {word:'Shani',   lang:'Bemba',   trans:'Hoe/Wat',      example:'Muli shani? (Hoe gaat het?)'},
+  {word:'Natotela',lang:'Bemba',   trans:'Dankjewel',    example:'Natotela sana! (Heel erg bedankt!)'},
+  {word:'Eya',     lang:'Bemba',   trans:'Ja',           example:'Eya, nkwiumfwa (Ja, ik begrijp het)'},
+  {word:'Imwe',    lang:'Bemba',   trans:'Jij/Jullie',   example:'Imwe muli bwanji? (Hoe gaat het met jullie?)'},
+];
+
+function getTodayWord(){
+  const dayNum=Math.floor(Date.now()/86400000);
+  return ZAMBIAN_WORDS[dayNum%ZAMBIAN_WORDS.length];
+}
+
+function renderWord(){
+  const card=document.getElementById('word-card');if(!card)return;
+  const w=getTodayWord();
+  card.innerHTML=`<div class="word-lang">📖 WOORD VAN DE DAG — ${w.lang.toUpperCase()}</div><div class="word-main">${w.word}</div><div class="word-trans">= "${w.trans}"</div><div class="word-example">${w.example}</div>`;
+  // Send as message once per day
+  const today=todayStr();
+  if(state.lastWordDate!==today){
+    state.lastWordDate=today;
+    setTimeout(()=>addMessage('Nigiri',`Woord van de dag: "${w.word}" (${w.lang}) = ${w.trans}! 📖🐾`),2000);
+  }
+}
+
+// ══════════════════════════════════════
+// BIRTHDAYS
+// ══════════════════════════════════════
+// Emma's birthday: March 15, Nigiri's: July 4
+const BIRTHDAYS=[
+  {name:'Emma',   month:3, day:15, icon:'💁🏾', msg:'Het is vandaag Emma\'s verjaardag! 🎂\nSabine, zing mee: Gelukkige verjaardag! 🎉'},
+  {name:'Nigiri', month:7, day:4,  icon:'🐶',   msg:'Het is Nigiri\'s verjaardag! 🎂\nZe wil sushi als verjaardagstaart! 🍣🎉'},
+];
+
+function checkBirthday(){
+  const now=new Date();
+  const key=`${now.getMonth()+1}-${now.getDate()}`;
+  if(state.bdayShown===key)return;
+  const bday=BIRTHDAYS.find(b=>b.month===now.getMonth()+1&&b.day===now.getDate());
+  if(!bday)return;
+  state.bdayShown=key;
+  // set birthday sky
+  document.getElementById('sky').className='sky bday';
+  spawnParticles(['🎂','🎉','🎈','✨','💕','🌟']);
+  playBirthday();
+  document.getElementById('bday-icon').textContent=bday.icon+'🎂';
+  document.getElementById('bday-title').textContent=`🎂 ${bday.name.toUpperCase()}'S VERJAARDAG! 🎂`;
+  document.getElementById('bday-text').textContent=bday.msg;
+  document.getElementById('bday-screen').classList.add('on');
+  addMessage('Emma',`${bday.icon} Het is ${bday.name}'s verjaardag vandaag! 🎂🎉`);
+  // Birthday bonuses
+  state.emma.happy=Math.min(100,state.emma.happy+30);
+  state.nigiri.happy=Math.min(100,state.nigiri.happy+30);
+  state.coins+=20;updateCoins();
+  saveGame();
+}
+
+function closeBday(){
+  playHappy();
+  document.getElementById('bday-screen').classList.remove('on');
+  // restore sky
+  setWeather(state.weather);
+}
+
+// ══════════════════════════════════════
+// HIGHSCORE
+// ══════════════════════════════════════
+function renderHighscore(){
+  const d=document.getElementById('hs-days'),c=document.getElementById('hs-coins');
+  if(d)d.textContent=Math.max(state.highscore.days,state.day);
+  if(c)c.textContent=state.highscore.coins;
+}
+
+// ══════════════════════════════════════
+// MINI-GAME
+// ══════════════════════════════════════
+let mgOn=false,mgSc=0,mgTl=30,mgIv=null,mgSpIv=null;
+function openMiniGame(){playClick();document.getElementById('minigame').classList.add('on');const ov=document.getElementById('mg-overlay');ov.style.display='flex';ov.innerHTML='<div style="font-family:\'VT323\',monospace;font-size:19px;color:var(--pg);text-align:center;">Tik op de ballen!<br><span style="font-size:13px;color:#777;">Elke hit = 2 munten 🪙</span></div><button class="mg-start-btn" onclick="startMiniGame()">▶ SPELEN</button>';mgSc=0;mgTl=30;document.getElementById('mg-score').textContent=0;document.getElementById('mg-time').textContent=30;document.getElementById('mg-bar').style.width='100%';document.querySelectorAll('.mg-target').forEach(t=>t.remove());}
+function closeMiniGame(){mgOn=false;clearInterval(mgIv);clearInterval(mgSpIv);document.getElementById('minigame').classList.remove('on');document.querySelectorAll('.mg-target').forEach(t=>t.remove());}
+function startMiniGame(){document.getElementById('mg-overlay').style.display='none';mgOn=true;mgSc=0;mgTl=30;const screen=document.getElementById('mg-screen');mgSpIv=setInterval(()=>{if(!mgOn)return;spawnTarget(screen);},550);mgIv=setInterval(()=>{if(!mgOn)return;mgTl--;document.getElementById('mg-time').textContent=mgTl;document.getElementById('mg-bar').style.width=(mgTl/30*100)+'%';if(mgTl<=0)endMiniGame();},1000);}
+function spawnTarget(screen){const t=document.createElement('div');t.className='mg-target';t.textContent=['🎾','🦴','🍣','🐾','🌟','🎈'][Math.floor(Math.random()*6)];const mw=screen.offsetWidth-44,mh=screen.offsetHeight-50;t.style.left=Math.max(4,Math.random()*mw)+'px';t.style.top=Math.max(24,Math.random()*mh)+'px';t.onclick=()=>{if(!mgOn)return;mgSc++;document.getElementById('mg-score').textContent=mgSc;playTone(660+mgSc*10,.06,'square',.05);t.style.transform='scale(0)';t.style.transition='transform .1s';setTimeout(()=>t.remove(),120);};screen.appendChild(t);setTimeout(()=>{if(t.parentElement)t.remove();},1800);}
+function endMiniGame(){mgOn=false;clearInterval(mgIv);clearInterval(mgSpIv);document.querySelectorAll('.mg-target').forEach(t=>t.remove());const earned=mgSc*2;state.coins+=earned;state.nigiri.happy=Math.min(100,state.nigiri.happy+15);state.emma.happy=Math.min(100,state.emma.happy+10);updateCoins();playHappy();const ov=document.getElementById('mg-overlay');ov.style.display='flex';ov.innerHTML=`<div style="font-family:'VT323',monospace;font-size:19px;color:var(--pg);text-align:center;line-height:1.8;">🎾 Score: ${mgSc}<br>🪙 +${earned} munten!<br><span style="font-size:13px;color:#888;">Ze zijn blij!</span></div><button class="mg-start-btn" onclick="closeMiniGame()">✓ Sluiten</button>`;addMessage('Emma',`Geweldig! Je verdiende ${earned} munten! 🎮🪙`);saveGame();}
+
+// ══════════════════════════════════════
+// TABS
+// ══════════════════════════════════════
+function switchTab(n){
+  playClick();
+  ['care','shop','msgs','pups','garden','extra','uitje'].forEach(t=>{
+    document.getElementById('panel-'+t).classList.toggle('active',t===n);
+    document.getElementById('tab-'+t).classList.toggle('active',t===n);
+  });
+  if(n==='shop')renderShop();
+  if(n==='msgs'){renderMessages();document.getElementById('msg-badge').style.display='none';}
+  if(n==='pups')renderPuppies();
+  if(n==='garden')renderGarden();
+  if(n==='extra'){renderChallenge();renderWord();renderHighscore();document.getElementById('extra-badge').style.display='none';}
+  if(n==='uitje'){renderUitjePanel();document.getElementById('uitje-badge').style.display='none';}
+}
+
+// ══════════════════════════════════════
+// GAME LOOP
+// ══════════════════════════════════════
+function getRealDay(){
+  if(!state.startDate) return state.day;
+  const start=new Date(state.startDate);
+  const now=new Date();
+  start.setHours(0,0,0,0);now.setHours(0,0,0,0);
+  return Math.floor((now-start)/86400000)+1;
+}
+
+function gameTick(){
+  if(state.isSleeping||state.dead)return;
+  state.hour++;
+  if(state.hour>=24){state.hour=6;state.day++;changeWeather();checkBirthday();
+  checkZambiaHoliday();
+    if(state.day>state.highscore.days){state.highscore.days=state.day;renderHighscore();}
+    initChallenge();
+  }
+  state.isNight=state.hour>=21||state.hour<7;
+  updateEmmasMood();
+  if(!['rain','snow','storm'].includes(state.weather)){document.getElementById('sky').className='sky '+(state.isNight?'night':'day');}
+  state.emma.hunger=Math.max(0,state.emma.hunger-4);
+  state.emma.happy=Math.max(0,state.emma.happy-2);
+  state.emma.energy=Math.max(0,state.emma.energy-3);
+  state.nigiri.hunger=Math.max(0,state.nigiri.hunger-5);
+  state.nigiri.happy=Math.max(0,state.nigiri.happy-3);
+  state.nigiri.love=Math.max(0,state.nigiri.love-2);
+  if(state.weather==='storm')state.nigiri.happy=Math.max(0,state.nigiri.happy-3);
+  checkNeeds();updateMood();maybeSendMessage();
+  renderGarden(); // update grow progress
+}
+
+function checkNeeds(){
+  if(state.dead)return;
+  const sick=state.emma.sick||state.nigiri.sick;
+  document.getElementById('sick-overlay').style.display=sick?'block':'none';
+  document.getElementById('sick-icon').style.display=sick?'block':'none';
+  const tot=state.emma.hunger+state.emma.happy+state.emma.energy+state.nigiri.hunger+state.nigiri.happy+state.nigiri.love;
+  if(tot===0){showDeathScreen();return;}
+  if(sick){showMsg('Ze zijn ziek! Zorg voor ze! 🤒');return;}
+  if(state.emma.hunger<30)showMsg('Emma heeft honger! 🍕');
+  else if(state.nigiri.hunger<25)showMsg('Nigiri wil eten! 🦴');
+  else if(state.emma.energy<25)showMsg('Emma is moe... 😴');
+  else if(state.nigiri.happy<25)showMsg('Nigiri is verdrietig 🐾');
+  else if(state.weather==='storm')showMsg('Nigiri is bang voor het onweer! ⛈️');
+}
+
+function updateMood(){
+  if(state.dead)return;
+  const ae=(state.emma.hunger+state.emma.happy+state.emma.energy)/3;
+  const an=(state.nigiri.hunger+state.nigiri.happy+state.nigiri.love)/3;
+  const avg=(ae+an)/2;
+  const icon=document.getElementById('mood-icon');
+  if(state.emma.sick||state.nigiri.sick){
+    icon.textContent='🤒';drawEmma('sad');drawNigiri('sad');
+    state.emma.hunger=Math.max(0,state.emma.hunger-2);state.nigiri.hunger=Math.max(0,state.nigiri.hunger-3);
+    if(ae+an>140){state.emma.sick=state.nigiri.sick=false;showMsg('Ze zijn beter! 🎉');spawnParticles(['✨','💕','🌸']);playHappy();addMessage('Emma','Dankjewel Sabine! Ik voel me zoveel beter! 💕');}
+  }else if(avg>70){icon.textContent='😊';drawEmma('happy');drawNigiri('happy');}
+  else if(avg>45){icon.textContent='😐';drawEmma('neutral');drawNigiri('neutral');}
+  else if(avg>20){
+    icon.textContent='😔';drawEmma('sad');drawNigiri('sad');
+    if(ae<25&&an<25){state.emma.sick=state.nigiri.sick=true;addMessage('Emma','Ik voel me niet goed... 🤒');}
+  }else{icon.textContent='😵';drawEmma('sad');drawNigiri('sad');}
+}
+
+function updateDisplay(){
+  const t=state.hour,tod=t<7?'🌙':t<12?'🌞':t<18?'☀️':t<21?'🌆':'🌙';
+  // Calculate real day number from startDate
+  let dayNum = state.day;
+  if (state.startDate) {
+    const start = new Date(state.startDate);
+    const now = new Date();
+    start.setHours(0,0,0,0); now.setHours(0,0,0,0);
+    dayNum = Math.floor((now - start) / 86400000) + 1;
+    if (dayNum !== state.day) { state.day = dayNum; }
+  }
+  const realDate = new Date();
+  const dayNames = ['zo','ma','di','wo','do','vr','za'];
+  const months = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+  const dateStr = `${dayNames[realDate.getDay()]} ${realDate.getDate()} ${months[realDate.getMonth()]}`;
+  document.getElementById('time-disp').textContent=`${tod} DAG ${dayNum}`;
+  document.getElementById('date-disp').textContent=dateStr;
+  updateCoins();
+  setBar('e-hun',state.emma.hunger);setBar('e-hap',state.emma.happy);setBar('e-eng',state.emma.energy);
+  setBar('n-hun',state.nigiri.hunger);setBar('n-hap',state.nigiri.happy);setBar('n-lov',state.nigiri.love);
+}
+
+function setBar(id,v){
+  const b=document.getElementById(id);if(!b)return;
+  b.style.width=Math.max(0,Math.min(100,v))+'%';b.style.opacity=v<20?.5:1;
+  b.style.animation=v<20?'blink .5s infinite':'none';
+}
+
+// ══════════════════════════════════════
+// ACTIONS
+// ══════════════════════════════════════
+const ACTIONS={
+  feed:{emoji:['🍕','🥗','🌮','🍜'],em:'Emma eet lekker!',nm:'Nigiri snoept mee!',snd:playEat,
+    fx(){state.emma.hunger=Math.min(100,state.emma.hunger+25);state.emma.happy=Math.min(100,state.emma.happy+5);state.nigiri.hunger=Math.min(100,state.nigiri.hunger+15);state.coins+=2;progressChallenge('feed');}},
+  walk:{emoji:['🌿','🌸','🦋','✨'],em:'Emma wandelt met Nigiri!',nm:'Nigiri rent vooruit!',snd:playHappy,
+    fx(){state.emma.happy=Math.min(100,state.emma.happy+20);state.emma.energy=Math.max(0,state.emma.energy-10);state.nigiri.happy=Math.min(100,state.nigiri.happy+30);state.nigiri.hunger=Math.max(0,state.nigiri.hunger-5);state.nigiri.love=Math.min(100,state.nigiri.love+15);state.coins+=5;progressChallenge('walk');}},
+  play:{emoji:['🎾','🎈','🌟','💫'],em:'Emma gooit de bal!',nm:'Apport!! 🐾',snd:playHappy,
+    fx(){state.emma.happy=Math.min(100,state.emma.happy+15);state.emma.energy=Math.max(0,state.emma.energy-15);state.nigiri.happy=Math.min(100,state.nigiri.happy+25);state.nigiri.love=Math.min(100,state.nigiri.love+20);state.coins+=4;drawNigiri('play');progressChallenge('play');}},
+  sleep:{emoji:['💤','⭐','🌙','✨'],em:'Welterusten! 😴',nm:'Nigiri sluimert...',snd:()=>playTone(220,.2,'sine',.05),
+    fx(){state.emma.energy=Math.min(100,state.emma.energy+40);state.emma.happy=Math.min(100,state.emma.happy+10);state.nigiri.love=Math.min(100,state.nigiri.love+5);state.isSleeping=true;state.hour=7;state.isNight=false;document.getElementById('sky').className='sky day';setTimeout(()=>{state.isSleeping=false;},3000);drawEmma('sleep');drawNigiri('sleep');setTimeout(()=>{drawEmma('happy');drawNigiri('happy');},3000);}},
+  bath:{emoji:['🛁','💦','🧼','✨'],em:'Emma douchet Nigiri!',nm:'...niet leuk! 😒',snd:()=>playTone(330,.1,'sawtooth',.04),
+    fx(){state.nigiri.happy=Math.max(0,state.nigiri.happy-5);state.nigiri.love=Math.min(100,state.nigiri.love+10);state.emma.happy=Math.min(100,state.emma.happy+5);state.coins+=3;progressChallenge('bath');}},
+  treat:{emoji:['🍖','💝','🌟','🎉'],em:'Speciaal snoepje!',nm:'LEKKER!! ❤️',snd:playEat,
+    fx(){state.nigiri.hunger=Math.min(100,state.nigiri.hunger+20);state.nigiri.happy=Math.min(100,state.nigiri.happy+20);state.nigiri.love=Math.min(100,state.nigiri.love+25);state.coins+=3;progressChallenge('treat');}},
+  kudasai:{emoji:['🍣','🍱','✨','💕','🌸'],em:'Emma geeft sushi... kudasai! 🍣',nm:'Nigiri HOUDT van sushi!! 🐾❤️',snd:playKudasai,
+    fx(){state.nigiri.hunger=Math.min(100,state.nigiri.hunger+35);state.nigiri.happy=Math.min(100,state.nigiri.happy+30);state.nigiri.love=Math.min(100,state.nigiri.love+40);state.emma.happy=Math.min(100,state.emma.happy+15);state.coins+=8;drawEmma('happy');drawNigiri('play');progressChallenge('kudasai');}},
+};
+
+function doAction(type){
+  const a=ACTIONS[type];if(!a)return;
+  a.fx();if(a.snd)a.snd();
+  showMsg(a.em);spawnParticles(a.emoji);animateChars(type);
+  setTimeout(()=>showMsg(a.nm),1500);
+  updateDisplay();saveGame();
+}
+
+function animateChars(type){
+  const e=document.getElementById('emma-char'),n=document.getElementById('nigiri-char');
+  const cls=type==='walk'?'a-bounce':type==='play'?'a-spin':type==='bath'?'a-shake':'a-bounce';
+  e.classList.add(cls);n.classList.add(type==='bath'?'a-shake':'a-bounce');
+  setTimeout(()=>{e.classList.remove(cls,'a-shake');n.classList.remove(cls,'a-shake');},1600);
+}
+
+let petCount=0;
+function petEmma(){
+  playTone(523,.05,'triangle',.05);
+  showBubble('emma-bubble',['Dankje! 😊','Jij bent lief!','❤️','Hoi Sabine!'][Math.floor(Math.random()*4)]);
+  state.emma.happy=Math.min(100,state.emma.happy+5);state.coins+=1;
+  spawnParticles(['💕','✨','😊']);petCount++;progressChallenge('pet');
+}
+function petNigiri(){
+  playTone(440,.05,'triangle',.05);
+  showBubble('nigiri-bubble',['Woof! 🐾','❤️','Aaai!','Blij!!'][Math.floor(Math.random()*4)]);
+  state.nigiri.love=Math.min(100,state.nigiri.love+8);state.coins+=1;
+  spawnParticles(['🐾','💝','✨']);petCount++;progressChallenge('pet');
+}
+
+function showBubble(id,text){const el=document.getElementById(id);const ch=el.closest('.character');el.textContent=text;ch.classList.add('show-bubble');setTimeout(()=>ch.classList.remove('show-bubble'),1800);}
+function showMsg(msg){document.getElementById('message').textContent=msg;}
+function spawnParticles(emojis){const c=document.getElementById('particles');for(let i=0;i<6;i++)setTimeout(()=>{const p=document.createElement('div');p.className='particle';p.textContent=emojis[Math.floor(Math.random()*emojis.length)];p.style.left=(20+Math.random()*60)+'%';p.style.bottom=(20+Math.random()*40)+'%';c.appendChild(p);setTimeout(()=>p.remove(),1500);},i*150);}
+
+// ══════════════════════════════════════
+// DEATH / RESET
+// ══════════════════════════════════════
+function showDeathScreen(){
+  state.dead=true;drawEmma('sad');drawNigiri('sad');playSad();
+  document.getElementById('death-days').textContent=`Ze hebben ${state.day} dag(en) gehaald.`;
+  document.getElementById('death-hs').textContent=`Jouw record: ${state.highscore.days} dagen`;
+  document.getElementById('death-screen').classList.add('on');
+}
+function resetGame(){try{localStorage.removeItem(SAVE_KEY);}catch(e){}location.reload();}
+function dismissWarning(){document.getElementById('return-warning').classList.remove('on');showMsg('Zorg goed voor ze! 🤒');}
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+function createStars(){
+  const c=document.getElementById('stars');
+  for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2+1;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${Math.random()*3+1}s;`;c.appendChild(s);}
+}
+
+// ══════════════════════════════════════
+// COMIC INTRO
+// ══════════════════════════════════════
+const FIRST_TIME_KEY = 'en_intro_done';
+function hasSeenIntro(){try{return!!localStorage.getItem(FIRST_TIME_KEY);}catch(e){return false;}}
+function markIntroSeen(){try{localStorage.setItem(FIRST_TIME_KEY,'1');}catch(e){}}
+
+function buildComicHTML(){
+  return `
+  <div class="comic-panel" id="cp1">
+    <div class="cp-num">1</div>
+    <div class="cp-scene" style="justify-content:center;">
+      <div style="position:relative;display:inline-block;">
+        <span style="font-size:46px;">🛋️</span>
+        <span style="position:absolute;top:-2px;right:-16px;font-size:26px;">🐶</span>
+        <span class="zzz" style="top:-14px;left:8px;animation-delay:0s;">z</span>
+        <span class="zzz" style="top:-26px;left:20px;animation-delay:.6s;font-size:11px;">z</span>
+        <span class="zzz" style="top:-38px;left:30px;animation-delay:1.1s;font-size:14px;">Z</span>
+      </div>
+    </div>
+    <div class="cp-text">Nigiri ligt op de bank.<br>Hij heeft daar de hele nacht gelegen.</div>
+    <div class="cp-caption">Hij overweegt nog een dutje.</div>
+  </div>
+  <div class="comic-panel" id="cp2">
+    <div class="cp-num">2</div>
+    <div class="cp-scene" style="justify-content:center;gap:4px;">
+      <span style="font-size:18px;opacity:.08;">👗</span>
+      <span style="font-size:18px;opacity:.15;">👗</span>
+      <span style="font-size:18px;opacity:.3;">👗</span>
+      <span style="font-size:18px;opacity:.55;">👗</span>
+      <span style="font-size:18px;">👗</span>
+      <canvas id="ci-emma" width="40" height="60" style="image-rendering:pixelated;margin-left:6px;"></canvas>
+    </div>
+    <div class="cp-text">Emma staat al 45 minuten voor de spiegel.</div>
+    <div class="cp-caption">"Het zevende jurkje is ook niet goed."</div>
+  </div>
+  <div class="comic-panel" id="cp3">
+    <div class="cp-num">3</div>
+    <div class="cp-scene" style="justify-content:center;gap:14px;">
+      <span style="font-size:38px;">😴</span>
+      <div style="position:relative;">
+        <span style="font-size:26px;">📱</span>
+        <span class="alarm-flash" style="position:absolute;top:-12px;left:-4px;font-size:11px;font-family:'Press Start 2P',monospace;">PIEP!</span>
+      </div>
+    </div>
+    <div class="cp-text">Sabine wordt wakker. De telefoon gaat.</div>
+    <div class="cp-caption">Het is 07:02. Een zaterdag.</div>
+  </div>
+  <div class="comic-panel" id="cp4">
+    <div class="cp-num">4</div>
+    <div class="cp-scene" style="justify-content:center;gap:10px;position:relative;">
+      <canvas id="ci-emma2" width="40" height="60" style="image-rendering:pixelated;"></canvas>
+      <span style="font-size:34px;margin-bottom:4px;">😵</span>
+      <div style="position:absolute;top:-2px;left:2px;background:white;color:#111;font-family:'VT323',monospace;font-size:12px;border-radius:8px;padding:4px 7px;max-width:160px;line-height:1.4;box-shadow:0 2px 6px rgba(0,0,0,.5);">
+        Sabine... Nigiri heeft honger. Ik ook. En ik wil nieuwe schoenen. 👠
+      </div>
+    </div>
+    <div class="cp-text">Emma staat naast het bed.</div>
+    <div class="cp-caption">Ze heeft al haar mooiste outfit aan.</div>
+  </div>
+  <div class="comic-btns" id="comic-buttons" style="opacity:0;transition:opacity .5s;">
+    <button class="comic-btn snooze" onclick="comicSnooze()">😴 Nog 5 min...</button>
+    <button class="comic-btn yes" onclick="comicStart()">💪 Ik ga ervoor!</button>
+  </div>`;
+}
+
+let comicStep=0;
+function showNextPanel(){
+  const panels=document.querySelectorAll('.comic-panel');
+  if(comicStep<panels.length){
+    panels[comicStep].classList.add('show');
+    if(comicStep===1)setTimeout(()=>drawEmma('happy','ci-emma'),50);
+    if(comicStep===3)setTimeout(()=>drawEmma('happy','ci-emma2'),50);
+    comicStep++;
+    if(comicStep<panels.length){setTimeout(showNextPanel,950);}
+    else{setTimeout(()=>{document.getElementById('comic-buttons').style.opacity='1';},400);}
+  }
+}
+
+function startComicIntro(){
+  const intro=document.getElementById('comic-intro');
+  document.getElementById('comic-wrap').innerHTML=buildComicHTML();
+  intro.classList.add('on');
+  comicStep=0;
+  setTimeout(showNextPanel,500);
+}
+
+function comicSnooze(){
+  playClick();
+  const btns=document.getElementById('comic-buttons');
+  btns.innerHTML=`<div style="font-family:'VT323',monospace;font-size:15px;color:var(--py);text-align:center;width:100%;line-height:1.6;">
+    Emma stuurt een boze sticker...<br>
+    <span style="font-size:22px;">😤🐾</span><br>
+    <span style="font-size:12px;color:#888;">Goed. Je gaat toch.</span>
+  </div>`;
+  setTimeout(()=>{
+    addMessage('Emma','Sabine!! Nigiri heeft al 3 keer geblaft. Kom NU. 😤🐾');
+    finishIntro();
+  },2200);
+}
+
+function comicStart(){
+  playClick();
+  spawnParticles(['💪','⭐','🌸','✨']);
+  finishIntro();
+}
+
+function finishIntro(){
+  markIntroSeen();
+  const intro=document.getElementById('comic-intro');
+  intro.style.transition='opacity .7s';intro.style.opacity='0';
+  setTimeout(()=>{intro.classList.remove('on');intro.style.display='none';actuallyStartGame();},700);
+}
+
+function init(){
+  createStars();
+  drawEmma('happy','wc-emma');drawNigiri('happy','wc-nigiri');
+  setTimeout(()=>{
+    document.getElementById('splash').classList.remove('on');
+    setTimeout(()=>{
+      if(!hasSeenIntro()){startComicIntro();}
+      else{document.getElementById('welcome').classList.add('on');}
+    },300);
+  },1800);
+}
+
+function startGame(){
+  playClick();
+  const w=document.getElementById('welcome');
+  w.style.transition='opacity .6s';w.style.opacity='0';
+  setTimeout(()=>{w.classList.remove('on');w.style.display='none';actuallyStartGame();},600);
+}
+
+function actuallyStartGame(){
+  // Set startDate if first time ever
+  if (!state.startDate) {
+    const existing = (() => { try { const r=localStorage.getItem('en_save_v5'); if(r){const p=JSON.parse(r);return p.s&&p.s.startDate?p.s.startDate:'';} } catch(e){} return ''; })();
+    state.startDate = existing || new Date().toISOString().split('T')[0];
+  }
+  loadAndApplyAbsence();
+  document.getElementById('game-ui').style.display='flex';
+  drawEmma('happy');drawNigiri('happy');
+  setWeather(state.weather||'sunny');
+  renderPuppies();renderMessages();renderGarden();renderUitjePanel();
+  initChallenge();renderWord();renderHighscore();
+  document.getElementById('uitje-badge').style.display='inline';
+  setInterval(gameTick,8000);setInterval(updateDisplay,300);
+  updateDisplay();
+  if(state.dead){showDeathScreen();return;}
+  if(state.emma.sick||state.nigiri.sick)document.getElementById('return-warning').classList.add('on');
+  updateMood();
+  checkBirthday();
+  checkZambiaHoliday();
+  if(!state.challenge.done)document.getElementById('extra-badge').style.display='inline';
+  const isStandalone=window.navigator.standalone||window.matchMedia('(display-mode:standalone)').matches;
+  if(!isStandalone)setTimeout(()=>{document.getElementById('install-tip').style.display='block';setTimeout(()=>document.getElementById('install-tip').style.display='none',8000);},2000);
+}
+
+init();
+</script>
+</body>
+</html>
